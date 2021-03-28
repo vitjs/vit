@@ -1,0 +1,36 @@
+{
+  "name": "@vitjs/core",
+  "version": "0.1.0",
+  "description": "@vitjs/core",
+  "keywords": [
+    "vit"
+  ],
+  "author": "theprimone <yuns.xie@qq.com>",
+  "homepage": "https://github.com/vitjs/vit#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rm -rf ./dist && tsc",
+    "dev": "rm -rf ./dist && tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitjs/vit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vitjs/vit/issues"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "mkdirp": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.168",
+    "@types/mkdirp": "^1.0.1"
+  }
+}

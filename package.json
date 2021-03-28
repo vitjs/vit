@@ -1,0 +1,20 @@
+{
+  "name": "vit",
+  "version": "0.1.0",
+  "description": "vit",
+  "main": "index.js",
+  "repository": "https://github.com/vitjs/vit.git",
+  "author": "theprimone <yuns.xie@qq.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "lerna run build"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0",
+    "typescript": "^4.2.3"
+  }
+}

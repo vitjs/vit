@@ -1,0 +1,38 @@
+{
+  "name": "@vitjs/runtime",
+  "version": "0.1.0",
+  "description": "@vitjs/runtime",
+  "keywords": [
+    "vit"
+  ],
+  "author": "theprimone <yuns.xie@qq.com>",
+  "homepage": "https://github.com/vitjs/vit#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rm -rf ./dist && tsc",
+    "dev": "rm -rf ./dist && tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitjs/vit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vitjs/vit/issues"
+  },
+  "dependencies": {
+    "react-loadable": "^5.5.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/react-loadable": "^5.5.5",
+    "@types/react-router": "^5.1.13",
+    "@types/react-router-dom": "^5.1.7"
+  }
+}

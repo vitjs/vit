@@ -1,0 +1,43 @@
+{
+  "name": "vit",
+  "version": "0.1.0",
+  "description": "vit",
+  "keywords": [
+    "vit"
+  ],
+  "author": "theprimone <yuns.xie@qq.com>",
+  "homepage": "https://github.com/vitjs/vit#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rm -rf ./dist && tsc && node ../../scripts/copy.js",
+    "dev": "node ../../scripts/copy.js && tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitjs/vit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vitjs/vit/issues"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "@vitjs/core": "^0.1.0",
+    "@vitjs/runtime": "^0.1.0",
+    "lodash": "^4.17.21",
+    "mkdirp": "^1.0.4",
+    "mustache": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.168",
+    "@types/mkdirp": "^1.0.1",
+    "@types/mustache": "^4.1.1",
+    "react": "^17.0.2",
+    "vite": "^2.1.3"
+  }
+}
