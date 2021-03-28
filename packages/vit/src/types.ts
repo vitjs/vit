@@ -1,3 +1,5 @@
+import { Service } from '@vitjs/core';
+
 export interface Route {
   component?: string;
   exact?: boolean;
@@ -17,5 +19,8 @@ export interface PluginConfig {
   history?: {
     type: 'browser' | 'hash' | 'memory';
     options: any;
+  };
+  hooks?: {
+    patchRoutes?: (service: Service) => void;
   };
 }

@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { {{ Router }} } from 'react-router-dom';
 
-import { renderRoutes } from '@vit-runtime';
+import { renderRoutes } from '@vitjs/runtime';
 import getRoutes from './routes';
 {{ #imports }}
 {{{ imports }}}

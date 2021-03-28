@@ -1,12 +1,15 @@
-import * as path from 'path';
+import { resolve } from 'path';
 import type { Plugin } from 'vite';
+import { Service } from '@vitjs/core';
 
-import { paths } from './constants';
 import { generateRoutes, generateVit } from './generateFiles';
 import { PluginConfig } from './types';
 
 export default function pluginFactory(config: PluginConfig): Plugin {
+  const { routes, dynamicImport, hooks } = config;
+
   let base = '/';
+  let service: Service;
 
   return {
     name: 'react-vit',
@@ -15,25 +18,25 @@ export default function pluginFactory(config: PluginConfig): Plugin {
         alias: [
           {
             find: /^\/@vit-app/,
-            replacement: path.join(paths.absTmpPath, './vit'),
-          },
-          {
-            find: '@vit-runtime',
-            replacement: path.join(__dirname, '../runtime'),
+            replacement: resolve(process.cwd(), './src/.vit/vit'),
           },
         ],
       },
     }),
     configResolved: (resolvedConfig) => {
       base = resolvedConfig.base;
+      service = new Service({
+        cwd: process.cwd(),
+        outDir: resolvedConfig.build.outDir,
+        routes: routes || [],
+        dynamicImport: dynamicImport,
+      });
+      generateRoutes(service);
       generateVit({
         ...config,
         base,
+        service,
       });
-    },
-    options: () => {
-      generateRoutes(config);
-      return null;
     },
   };
 }

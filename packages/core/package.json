@@ -1,7 +1,7 @@
 {
-  "name": "vit",
+  "name": "@vitjs/core",
   "version": "0.1.0",
-  "description": "vit",
+  "description": "@vitjs/core",
   "keywords": [
     "vit"
   ],
@@ -10,8 +10,8 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rm -rf ./dist && tsc && node ../../scripts/copy.js",
-    "dev": "node ../../scripts/copy.js && tsc -w"
+    "build": "rm -rf ./dist && tsc",
+    "dev": "rm -rf ./dist && tsc -w"
   },
   "repository": {
     "type": "git",
@@ -21,18 +21,11 @@
     "url": "https://github.com/vitjs/vit/issues"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.6.2",
-    "@vitjs/core": "^0.1.0",
-    "@vitjs/runtime": "^0.1.0",
     "lodash": "^4.17.21",
-    "mkdirp": "^1.0.4",
-    "mustache": "^4.1.0"
+    "mkdirp": "^1.0.4"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.168",
-    "@types/mkdirp": "^1.0.1",
-    "@types/mustache": "^4.1.1",
-    "react": "^17.0.2",
-    "vite": "^2.1.3"
+    "@types/mkdirp": "^1.0.1"
   }
 }

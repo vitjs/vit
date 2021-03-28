@@ -1,7 +1,10 @@
 {{ #dynamic }}
-import { dynamic } from '@vit-runtime';
+import { dynamic } from '@vitjs/runtime';
 {{ /dynamic }}
-
+{{ #imports }}
+import React from 'react';
+{{{ imports }}}
+{{ /imports }}
 {{ #modules }}
 import {{ name }} from '{{{ path }}}';
 {{ /modules }}
