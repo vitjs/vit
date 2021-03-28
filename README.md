@@ -14,7 +14,16 @@ yarn add @vitjs/vit --dev
 
 ### 配置
 
+```html
+// index.html
+<body>
+  <div id="root"></div>
+  <script type="module" src="/@vit-app"></script>
+</body>
+```
+
 ```ts
+// vite.config.ts
 import type { UserConfig } from 'vite';
 import vitApp from '@vitjs/vit';
 
