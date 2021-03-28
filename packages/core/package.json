@@ -25,6 +25,9 @@
   "bugs": {
     "url": "https://github.com/vitjs/vit/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4"
@@ -32,5 +35,6 @@
   "devDependencies": {
     "@types/lodash": "^4.14.168",
     "@types/mkdirp": "^1.0.1"
-  }
+  },
+  "gitHead": "fec2e2e3dd02e0bc7759139c1042b3d5b61b5438"
 }
