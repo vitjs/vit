@@ -9,6 +9,11 @@
   "homepage": "https://github.com/vitjs/vit#readme",
   "license": "MIT",
   "main": "dist/index.js",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
   "scripts": {
     "build": "rm -rf ./dist && tsc && node ../../scripts/copy.js",
     "dev": "node ../../scripts/copy.js && tsc -w"
