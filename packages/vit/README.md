@@ -1,1 +1,1 @@
-# vit
+# @vitjs/vit

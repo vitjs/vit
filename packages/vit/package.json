@@ -1,5 +1,5 @@
 {
-  "name": "vit",
+  "name": "@vitjs/vit",
   "version": "0.1.0",
   "description": "vit",
   "keywords": [
@@ -43,5 +43,5 @@
     "react": "^17.0.2",
     "vite": "^2.1.3"
   },
-  "gitHead": "fec2e2e3dd02e0bc7759139c1042b3d5b61b5438"
+  "gitHead": "3a9f3aab27ee09337490e3d7b3b5bfd2d81683a4"
 }
