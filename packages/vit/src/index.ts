@@ -6,7 +6,7 @@ import { generateRoutes, generateVit } from './generateFiles';
 import { PluginConfig } from './types';
 
 export default function pluginFactory(config: PluginConfig): Plugin {
-  const { routes, dynamicImport, hooks } = config;
+  const { routes, dynamicImport } = config;
 
   let base = '/';
   let service: Service;
