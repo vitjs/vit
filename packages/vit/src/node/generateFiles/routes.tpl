@@ -1,6 +1,10 @@
 {{ #dynamic }}
-import { dynamic } from '@vite-app/runtime';
+import { dynamic } from '@vit-runtime';
 {{ /dynamic }}
+
+{{ #modules }}
+import {{ name }} from '{{{ path }}}';
+{{ /modules }}
 
 {{ #loadingComponent }}
 import LoadingComponent from '{{{ loadingComponent }}}';

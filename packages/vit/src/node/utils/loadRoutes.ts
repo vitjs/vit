@@ -1,7 +1,19 @@
+import { resolve } from 'path';
+import _cloneDeep from 'lodash/cloneDeep';
+
+import { paths } from '../constants';
+import resolveRoutes from './resolveRoutes';
 import { Route, PluginConfig } from '../types';
 
 export default function loadRoutes(config: PluginConfig) {
-  patchRoutes(config.routes!);
+  const clonedRoutes = _cloneDeep(config.routes!);
+
+  let modules: { [path: string]: string } = {};
+  if (!config.dynamicImport) {
+    modules = resolveRoutes(config.routes || []);
+  }
+
+  patchRoutes(clonedRoutes);
 
   function patchRoutes(routes: Route[]) {
     routes.forEach(patchRoute);
@@ -17,8 +29,8 @@ export default function loadRoutes(config: PluginConfig) {
   }
 
   function replaceComponent(route: Route) {
-    console.log('config.dynamicImport', config.dynamicImport);
     if (route.component) {
+      route.component = resolve(paths.sourcePath, route.component);
       if (config.dynamicImport) {
         let loading = '';
         if (config.dynamicImport.loading) {
@@ -26,7 +38,7 @@ export default function loadRoutes(config: PluginConfig) {
         }
         route.component = `dynamic({ loader: () => import('${route.component}')${loading}})`;
       } else {
-        route.component = `require('${route.component}').default`;
+        route.component = modules[route.component];
       }
     }
   }
@@ -34,20 +46,21 @@ export default function loadRoutes(config: PluginConfig) {
   function replaceWrappers(route: Route) {
     if (route.wrappers) {
       route.wrappers = route.wrappers.map((item) => {
+        let wrapper = resolve(paths.sourcePath, item);
         if (config.dynamicImport) {
           let loading = '';
           if (config.dynamicImport.loading) {
             loading = `, loading: LoadingComponent`;
           }
-          return `dynamic({ loader: () => import('${item}')${loading}})`;
+          return `dynamic({ loader: () => import('${wrapper}')${loading}})`;
         } else {
-          return `require('${item}').default`;
+          return modules[wrapper];
         }
       });
     }
   }
 
-  return JSON.stringify(config.routes, null, 2)
+  return JSON.stringify(clonedRoutes, null, 2)
     .replace(/\"component\": (\"(.+?)\")/g, (global, m1, m2) => {
       return `"component": ${m2.replace(/\^/g, '"')}`;
     })

@@ -1,29 +1,29 @@
-{{#importsAhead}}
-  {{{ importsAhead }}}
-{{/importsAhead}}
+{{ #importsAhead }}
+{{ importsAhead }}
+{{ /importsAhead }}
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { {{{ Router }}} } from 'react-router-dom';
+import { {{ Router }} } from 'react-router-dom';
 
-import { renderRoutes } from '@vite-app/runtime';
+import { renderRoutes } from '@vit-runtime';
 import getRoutes from './routes';
-{{#imports}}
-  {{{ imports }}}
-{{/imports}}
+{{ #imports }}
+{{{ imports }}}
+{{ /imports }}
 
-{{#entryCodeAhead}}
-  {{{ entryCodeAhead }}}
-{{/entryCodeAhead}}
+{{ #entryCodeAhead }}
+{{{ entryCodeAhead }}}
+{{ /entryCodeAhead }}
 
 ReactDOM.render(
   <React.StrictMode>
-    <{{{ Router }}}
-{{#base}}
-      basename={{{{ base }}}}
-{{/base}}
+    <{{ Router }}
+{{ #base }}
+      basename='{{{ base }}}'
+{{ /base }}
     >
-      {renderRoutes({ getRoutes() })}
-    </{{{ Router }}}>
+      {renderRoutes({ routes: getRoutes() })}
+    </{{ Router }}>
   </React.StrictMode>,
   document.getElementById('root'),
 );

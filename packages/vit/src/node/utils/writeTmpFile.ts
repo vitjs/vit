@@ -3,11 +3,8 @@ import * as path from 'path';
 import mkdirp from 'mkdirp';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 
+import { paths } from '../constants';
 import { isTSFile } from './utils';
-
-const paths = {
-  absTmpPath: `${path.resolve(process.cwd(), 'src/.vit')}`,
-};
 
 export default function writeTmpFile({
   path: writePath,

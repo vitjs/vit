@@ -6,8 +6,23 @@ interface LoadableOptions {
   loader?: Function;
 }
 
+function FixedLoadable(options: LoadableOptions) {
+  return Loadable({
+    ...options,
+    loader: () => {
+      return new Promise<any>((resolve) => {
+        options.loader?.().then((module: { default: any }) => {
+          // ref: https://stackoverflow.com/a/34130767/8335317
+          // 返回 module 页面报错，无法正常渲染
+          resolve(module.default);
+        });
+      });
+    },
+  } as any);
+}
+
 export default function dynamic(options: any) {
-  const loadableFn = Loadable;
+  const loadableFn = FixedLoadable;
   let loadableOptions: LoadableOptions = {
     loading: ({ error, isLoading }: { error: Error; isLoading: boolean }) => {
       if (process.env.NODE_ENV === 'development') {

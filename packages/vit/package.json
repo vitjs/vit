@@ -28,6 +28,7 @@
     "url": "https://github.com/vitjs/vit/issues"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
     "mustache": "^4.1.0",
     "react-loadable": "^5.5.0",
@@ -35,6 +36,7 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.168",
     "@types/mkdirp": "^1.0.1",
     "@types/mustache": "^4.1.1",
     "@types/react-loadable": "^5.5.5",
