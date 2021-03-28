@@ -25,17 +25,19 @@ export default function generateVit(options: GenerateVitOptions) {
     }
   };
 
-  const files = ['global.ts', 'global.tsx', 'global.css', 'global.less', 'global.scss', 'global.sass'];
-  const globalFiles = getGlobalFiles({ absSrcPath: paths.sourcePath, files });
+  const autoImportsAheadFiles = ['concent.ts'];
+  const importsAheadFiles = getGlobalFiles({ absSrcPath: paths.sourcePath, files: autoImportsAheadFiles });
 
-  console.log('globalFiles', globalFiles);
+  const autoImportFiles = ['global.ts', 'global.tsx', 'global.css', 'global.less', 'global.scss', 'global.sass'];
+  const importFiles = getGlobalFiles({ absSrcPath: paths.sourcePath, files: autoImportFiles });
 
   writeTmpFile({
     path: 'vit.tsx',
     content: Mustache.render(vitTpl, {
       Router: getRouter(),
       base: options.base,
-      imports: `${globalFiles.map((file) => `import '../${relative(paths.sourcePath, file)}';`).join('\n')}`,
+      importsAhead: `${importsAheadFiles.map((file) => `import '../${relative(paths.sourcePath, file)}';`).join('\n')}`,
+      imports: `${importFiles.map((file) => `import '../${relative(paths.sourcePath, file)}';`).join('\n')}`,
     }),
   });
 }
