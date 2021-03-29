@@ -16,6 +16,6 @@ export interface PluginConfig {
   };
   history?: {
     type: 'browser' | 'hash' | 'memory';
-    options: any;
+    options?: any;
   };
 }
