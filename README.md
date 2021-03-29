@@ -15,7 +15,7 @@ yarn add @vitjs/vit --dev
 ### 配置
 
 ```html
-// index.html
+<!-- index.html -->
 <body>
   <div id="root"></div>
   <script type="module" src="/@vit-app"></script>
@@ -31,7 +31,7 @@ const config: UserConfig = {
   plugins: [
     vitApp({
       // 根据项目结构配置路由，组件统一从 src 目录下引入
-      // icon 当前支持自动转义为 @ant-design/icons 中导入
+      // icon 当前支持自动转义为 @ant-design/icons 中的图标
       routes: [
         {
           path: '/',
