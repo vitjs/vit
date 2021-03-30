@@ -1,6 +1,8 @@
 # vit
 
-> React application framework based on Vite.
+[![npm package](https://img.shields.io/npm/v/@vitjs/vit.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@vitjs/vit) [![GitHub stars](https://img.shields.io/github/stars/vitjs/vit)](https://github.com/vitjs/vit/stargazers)
+
+> 🛠 React application framework based on Vite.
 
 基于 Vite 插件实现的类 Umi 的应用框架。
 
