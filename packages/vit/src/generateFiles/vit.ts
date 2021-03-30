@@ -1,10 +1,13 @@
 import { readFileSync } from 'fs';
-import { join } from 'path';
+import { resolve } from 'path';
 import Mustache from 'mustache';
 import type { UserConfig } from 'vite';
+import { fileURLToPath } from 'url';
 import { Service } from '@vitjs/core';
 
 import { PluginConfig } from '../types';
+
+const filePath = fileURLToPath(import.meta.url);
 
 export interface GenerateVitOptions extends Pick<UserConfig, 'base'>, Pick<PluginConfig, 'history'> {
   service: Service;
@@ -12,7 +15,7 @@ export interface GenerateVitOptions extends Pick<UserConfig, 'base'>, Pick<Plugi
 
 export default function generateVit(options: GenerateVitOptions) {
   const { service, history, base } = options;
-  const vitTpl = readFileSync(join(__dirname, './vit.tpl'), 'utf-8');
+  const vitTpl = readFileSync(resolve(filePath, '../vit.tpl'), 'utf-8');
 
   const getRouter = () => {
     const type = history?.type;

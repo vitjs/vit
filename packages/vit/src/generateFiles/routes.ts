@@ -1,16 +1,22 @@
 import { readFileSync } from 'fs';
-import { resolve, join } from 'path';
+import { resolve } from 'path';
 import Mustache from 'mustache';
+import { fileURLToPath } from 'url';
 import { Service } from '@vitjs/core';
 
 import { resolveIcons } from './utils';
+
+// ref:
+// https://github.com/vitejs/vite/issues/2728
+// https://github.com/nodejs/node/issues/28114#issuecomment-499977502
+const filePath = fileURLToPath(import.meta.url);
 
 export interface GenerateRoutesOptions {
   service: Service;
 }
 
 export default function generateRoutes(service: Service) {
-  const routesTpl = readFileSync(join(__dirname, './routes.tpl'), 'utf-8');
+  const routesTpl = readFileSync(resolve(filePath, '../routes.tpl'), 'utf-8');
 
   let moduleMap: { [path: string]: string } = {};
   if (!service.route.dynamicImport) {
