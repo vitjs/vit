@@ -4,12 +4,12 @@ export default function Welcome() {
   return (
     <div
       style={{
-        marginTop: 8,
+        marginTop: 16,
         padding: '16px 24px',
-        border: 'red 1px dashed',
+        border: 'red 2px dashed',
       }}
     >
-      Welcome
+      Welcome Page
     </div>
   );
 }
