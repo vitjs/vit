@@ -1,7 +1,7 @@
 import { existsSync } from 'fs';
 import { join } from 'path';
 
-type IGetGlobalFiles = (opts: { absSrcPath: string; files: string[] }) => string[];
+type IGetGlobalFiles = (options: { absSrcPath: string; files: string[]; checkExists?: boolean }) => string[];
 
 /**
  * get global file like (global.js, global.css)

@@ -62,7 +62,8 @@ export default class Service {
   }
 
   dumpGlobalImports(files: string[]) {
-    const importsAheadFiles = getGlobalFiles({ absSrcPath: this.paths.absSrcPath!, files });
-    return `${importsAheadFiles.map((file) => `import '../${relative(this.paths.absSrcPath!, file)}';`).join('\n')}`;
+    return `${getGlobalFiles({ absSrcPath: this.paths.absSrcPath!, files })
+      .map((file) => `import '../${relative(this.paths.absSrcPath!, file)}';`)
+      .join('\n')}`;
   }
 }
