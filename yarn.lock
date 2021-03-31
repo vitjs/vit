@@ -5049,6 +5049,18 @@ vite@^2.1.3:
   optionalDependencies:
     fsevents "~2.3.1"
 
+vite@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.npm.taobao.org/vite/download/vite-2.1.5.tgz#4857da441c62f7982c83cbd5f42a00330f20c9c1"
+  integrity sha1-SFfaRBxi95gsg8vV9CoAMw8gycE=
+  dependencies:
+    esbuild "^0.9.3"
+    postcss "^8.2.1"
+    resolve "^1.19.0"
+    rollup "^2.38.5"
+  optionalDependencies:
+    fsevents "~2.3.1"
+
 wcwidth@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/wcwidth/download/wcwidth-1.0.1.tgz#f0b0dcf915bc5ff1528afadb2c0e17b532da2fe8"
