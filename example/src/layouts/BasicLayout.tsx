@@ -30,6 +30,7 @@ export default function BasicLayout(props: BasicLayoutProps) {
         return (
           <div>
             <Link key={item.path} to={item.path}>
+              {item.icon && <span style={{ marginRight: 4 }}>{item.icon}</span>}
               {item.path === '/' ? 'Home' : item.name || item.path}
             </Link>
             {subRoutes && <div style={{ marginLeft: 16 }}>{renderMenu(subRoutes)}</div>}
