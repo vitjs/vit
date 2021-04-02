@@ -5,13 +5,19 @@ export default [
     routes: [
       {
         path: '/',
-        redirect: '/welcome',
+        redirect: '/hello',
         exact: true,
+      },
+      {
+        path: '/hello',
+        icon: 'star',
+        name: 'Hello',
+        component: './pages/Hello',
       },
       {
         path: '/welcome',
         icon: 'smile',
-        name: '欢迎页',
+        name: 'Welcome',
         component: './pages/Welcome',
       },
     ],
