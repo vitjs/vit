@@ -1,4 +1,4 @@
-# vit
+# @vitjs/vit
 
 [![npm package](https://img.shields.io/npm/v/@vitjs/vit.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@vitjs/vit) [![GitHub stars](https://img.shields.io/github/stars/vitjs/vit)](https://github.com/vitjs/vit/stargazers)
 
