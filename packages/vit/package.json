@@ -1,7 +1,7 @@
 {
   "name": "@vitjs/vit",
   "version": "0.1.1",
-  "description": "vit",
+  "description": "@vitjs/vit",
   "keywords": [
     "vit"
   ],
@@ -32,6 +32,7 @@
     "@ant-design/icons": "^4.6.2",
     "@vitjs/core": "^0.1.1",
     "@vitjs/runtime": "^0.1.1",
+    "@vitjs/types": "^0.1.1",
     "chokidar": "^3.5.1",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",

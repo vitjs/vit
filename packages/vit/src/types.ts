@@ -1,21 +1,13 @@
-export interface Route {
-  component?: string;
-  exact?: boolean;
-  path?: string;
-  routes?: Route[];
-  wrappers?: string[];
-  title?: string;
-  [key: string]: any;
-}
+import { IRoute } from '@vitjs/types';
 
 export interface PluginConfig {
-  routes?: Route[];
-  exportStatic?: boolean;
+  routes?: IRoute[];
+  exportStatic?: {};
   dynamicImport?: {
     loading?: string;
   };
   history?: {
     type: 'browser' | 'hash' | 'memory';
-    options?: any;
+    // options?: any;
   };
 }

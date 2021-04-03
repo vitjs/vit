@@ -15,7 +15,7 @@ export default function pluginFactory(config: PluginConfig): Plugin {
   let watchers: FSWatcher[] = [];
 
   return {
-    name: 'react-vit',
+    name: 'vit-app',
     config: () => ({
       resolve: {
         alias: [
