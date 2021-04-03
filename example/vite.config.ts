@@ -6,5 +6,5 @@ import routes from './config/routes';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [reactRefresh(), vitApp({ routes })],
+  plugins: [reactRefresh(), vitApp({ debug: true, routes, exportStatic: {} })],
 });

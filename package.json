@@ -13,6 +13,7 @@
   "scripts": {
     "build": "lerna run build",
     "demo": "cd example && vite",
+    "demo:build": "cd example && vite build",
     "dev": "npm run demo"
   },
   "devDependencies": {

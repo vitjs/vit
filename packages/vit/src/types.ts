@@ -1,6 +1,7 @@
 import { IRoute } from '@vitjs/types';
 
 export interface PluginConfig {
+  debug?: boolean;
   routes?: IRoute[];
   exportStatic?: {};
   dynamicImport?: {

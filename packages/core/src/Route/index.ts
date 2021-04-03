@@ -1,5 +1,6 @@
 import { resolve } from 'path';
 import _cloneDeep from 'lodash/cloneDeep';
+import _uniq from 'lodash/uniq';
 
 import Service from '../Service';
 
@@ -32,6 +33,9 @@ export default class Route {
     this.dynamicImport = options.dynamicImport;
   }
 
+  /**
+   * 解析路由组件配置，得到组件绝对路径和组件别名的映射
+   */
   resolveRoutes() {
     const result: { [path: string]: string } = {};
 
@@ -67,6 +71,12 @@ export default class Route {
     return result;
   }
 
+  /**
+   * 输出路由配置，可做额外修改
+   *
+   * @param options
+   * @returns
+   */
   dumpRoutes(options?: { extraReplace?: (route: IRoute) => void; postDump?: (content: string) => string }) {
     const { extraReplace, postDump } = options || {};
     const clonedRoutes = _cloneDeep(this.routes!);
@@ -143,5 +153,15 @@ export default class Route {
     } else {
       this.routes = setRoutes;
     }
+  }
+
+  getPaths({ routes }: { routes: IRoute[] }): string[] {
+    return _uniq(
+      routes.reduce((memo: string[], route) => {
+        if (route.path) memo.push(route.path);
+        if (route.routes) memo = memo.concat(this.getPaths({ routes: route.routes }));
+        return memo;
+      }, [])
+    );
   }
 }

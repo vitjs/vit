@@ -3,6 +3,7 @@ import type { Plugin } from 'vite';
 import { Service } from '@vitjs/core';
 import chokidar, { FSWatcher } from 'chokidar';
 
+import { exportStatic } from './preset';
 import { generateRoutes, generateVit } from './generateFiles';
 import { autoImportsAheadFiles, autoImportFiles } from './generateFiles/vit';
 import { PluginConfig } from './types';
@@ -20,15 +21,25 @@ export default function pluginFactory(config: PluginConfig): Plugin {
       resolve: {
         alias: [
           {
-            find: /^\/@vit-app/,
+            find: /@vit-app$/,
             replacement: resolve(process.cwd(), './src/.vit/vit'),
           },
         ],
       },
     }),
+    closeBundle: () => {
+      // 不关闭会导致编译完成时命令不会自动退出
+      watchers.forEach((item) => item.close());
+
+      exportStatic({
+        service,
+        config,
+      });
+    },
     configResolved: (resolvedConfig) => {
       base = resolvedConfig.base;
       service = new Service({
+        debug: config.debug,
         cwd: process.cwd(),
         outDir: resolvedConfig.build.outDir,
         routes: routes || [],

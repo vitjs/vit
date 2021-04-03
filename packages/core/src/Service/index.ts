@@ -6,16 +6,14 @@ import mkdirp from 'mkdirp';
 import Route, { RouteOptions } from '../Route';
 import { isTSFile, getGlobalFiles } from './utils';
 
-export interface ServiceHooks {
-  patchRoutes?: (service: Service) => void;
-}
-
 export interface ServiceOptions extends Omit<RouteOptions, 'paths' | 'service'> {
+  debug?: boolean;
   cwd: string;
   outDir: string;
 }
 
 export default class Service {
+  debug?: boolean;
   paths: {
     cwd?: string;
     absSrcPath?: string;
@@ -26,6 +24,7 @@ export default class Service {
   route: Route;
 
   constructor(options: ServiceOptions) {
+    this.debug = options.debug;
     this.initPaths(options);
     this.route = new Route({
       routes: options.routes,
@@ -49,16 +48,24 @@ export default class Service {
     };
   }
 
+  writeFile({ path, content }: { path: string; content: string }) {
+    mkdirp.sync(dirname(path));
+    if (!existsSync(path) || readFileSync(path, 'utf-8') !== content) {
+      writeFileSync(path, content, 'utf-8');
+    }
+  }
+
   writeTmpFile({ path, content, skipTSCheck = true }: { path: string; content: string; skipTSCheck?: boolean }) {
     const absPath = join(this.paths.absTmpPath!, path);
-    mkdirp.sync(dirname(absPath));
     if (isTSFile(path) && skipTSCheck) {
       // write @ts-nocheck into first line
       content = `// @ts-nocheck${EOL}${content}`;
     }
-    if (!existsSync(absPath) || readFileSync(absPath, 'utf-8') !== content) {
-      writeFileSync(absPath, content, 'utf-8');
-    }
+
+    this.writeFile({
+      path: absPath,
+      content,
+    });
   }
 
   dumpGlobalImports(files: string[]) {
