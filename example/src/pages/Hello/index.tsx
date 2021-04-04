@@ -1,4 +1,7 @@
 import React from 'react';
+import { history } from '@vitjs/vit';
+
+import Button from '@/components/Button';
 
 export default function Hello() {
   return (
@@ -10,6 +13,8 @@ export default function Hello() {
       }}
     >
       Hello Page
+      <br />
+      <Button onClick={() => history.push('/welcome')}>runtime history push to /welcome</Button>
     </div>
   );
 }

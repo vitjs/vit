@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { Link } from '../../../packages/runtime/src';
+import { Link } from '@vitjs/vit';
 
 export interface IRoute {
   component: React.ReactNode;
@@ -28,8 +27,8 @@ export default function BasicLayout(props: BasicLayoutProps) {
         const subRoutes = item.routes;
 
         return (
-          <div>
-            <Link key={item.path} to={item.path}>
+          <div key={item.path}>
+            <Link to={item.path}>
               {item.icon && <span style={{ marginRight: 4 }}>{item.icon}</span>}
               {item.path === '/' ? 'Home' : item.name || item.path}
             </Link>

@@ -24,7 +24,8 @@
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "typescript": "^4.2.3",
-    "vite": "^2.1.5"
+    "vite": "^2.1.5",
+    "vite-tsconfig-paths": "^2.5.0"
   },
   "@comment devDependencies": [
     "COMMENT of devDependencies, inspired by: https://dev.to/dhurlburtusa/comment/16nn8",
