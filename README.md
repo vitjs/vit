@@ -60,6 +60,12 @@ const config: UserConfig = {
 export default config;
 ```
 
+此外，还需要将临时文件所在目录加入到 .gitignore 中：
+
+```
+.vit
+```
+
 更多用法可参考 [vite-react](https://github.com/theprimone/vite-react)。值得注意的是，当前插件还在快速迭代阶段，可能会出现配置不兼容的情况。
 
 ## 致谢
