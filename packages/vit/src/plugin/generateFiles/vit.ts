@@ -14,26 +14,12 @@ export interface GenerateVitOptions extends Pick<UserConfig, 'base'>, Pick<Plugi
 }
 
 export default function generateVit(options: GenerateVitOptions) {
-  const { service, history, base } = options;
+  const { service } = options;
   const vitTpl = readFileSync(resolve(__dirname, './vit.tpl'), 'utf-8');
-
-  const getRouter = () => {
-    const type = history?.type;
-    switch (type) {
-      case 'hash':
-        return 'HashRouter';
-      case 'memory':
-        return 'MemoryRouter';
-      default:
-        return 'BrowserRouter';
-    }
-  };
 
   service.writeTmpFile({
     path: 'vit.tsx',
     content: Mustache.render(vitTpl, {
-      Router: getRouter(),
-      base,
       importsAhead: service.dumpGlobalImports(autoImportsAheadFiles),
       imports: service.dumpGlobalImports(autoImportFiles),
     }),

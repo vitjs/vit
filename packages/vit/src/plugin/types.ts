@@ -1,3 +1,4 @@
+import type { BrowserHistoryBuildOptions, HashHistoryBuildOptions, MemoryHistoryBuildOptions } from '@vitjs/runtime';
 import { IRoute } from '@vitjs/types';
 
 export interface PluginConfig {
@@ -9,6 +10,6 @@ export interface PluginConfig {
   };
   history?: {
     type: 'browser' | 'hash' | 'memory';
-    // options?: any;
+    options?: BrowserHistoryBuildOptions | HashHistoryBuildOptions | MemoryHistoryBuildOptions;
   };
 }

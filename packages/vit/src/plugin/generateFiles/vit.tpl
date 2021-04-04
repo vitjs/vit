@@ -3,9 +3,9 @@
 {{ /importsAhead }}
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { {{ Router }} } from 'react-router-dom';
+import { renderRoutes, Router } from '@vitjs/runtime';
 
-import { renderRoutes } from '@vitjs/runtime';
+import history from './history';
 import getRoutes from './routes';
 {{ #imports }}
 {{{ imports }}}
@@ -17,13 +17,9 @@ import getRoutes from './routes';
 
 ReactDOM.render(
   <React.StrictMode>
-    <{{ Router }}
-{{ #base }}
-      basename='{{{ base }}}'
-{{ /base }}
-    >
+    <Router history={history}>
       {renderRoutes({ routes: getRoutes() })}
-    </{{ Router }}>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root'),
 );

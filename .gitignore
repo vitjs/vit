@@ -2,3 +2,5 @@ node_modules
 *.log
 dist
 .vit
+packages/vit/plugin
+packages/vit/runtime

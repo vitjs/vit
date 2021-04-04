@@ -8,15 +8,18 @@
   "author": "theprimone <yuns.xie@qq.com>",
   "homepage": "https://github.com/vitjs/vit#readme",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "runtime/index.js",
   "files": [
-    "dist",
+    "plugin",
+    "runtime",
     "package.json",
     "README.md"
   ],
   "scripts": {
-    "build": "rm -rf ./dist && tsc && node ../../scripts/copy.js",
-    "dev": "node ../../scripts/copy.js && tsc -w"
+    "build-plugin": "rm -rf ./plugin && tsc -p src/plugin && node ../../scripts/copy.js",
+    "build-runtime": "rm -rf ./runtime && tsc -p src/runtime && node ../../scripts/copy.js",
+    "build": "concurrently \"npm:build-*\"",
+    "dev": "node ../../scripts/copy.js && tsc -w src/plugin"
   },
   "repository": {
     "type": "git",
@@ -43,6 +46,7 @@
     "@types/lodash": "^4.14.168",
     "@types/mkdirp": "^1.0.1",
     "@types/mustache": "^4.1.1",
+    "concurrently": "^6.0.0",
     "react": "^17.0.2",
     "vite": "^2.1.3"
   },

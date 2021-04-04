@@ -4,7 +4,7 @@ import { Service } from '@vitjs/core';
 import chokidar, { FSWatcher } from 'chokidar';
 
 import { exportStatic } from './preset';
-import { generateRoutes, generateVit } from './generateFiles';
+import { generateHistory, generateRoutes, generateVit, generateExports } from './generateFiles';
 import { autoImportsAheadFiles, autoImportFiles } from './generateFiles/vit';
 import { PluginConfig } from './types';
 
@@ -20,6 +20,10 @@ export default function pluginFactory(config: PluginConfig): Plugin {
     config: () => ({
       resolve: {
         alias: [
+          {
+            find: /@@/,
+            replacement: resolve(process.cwd(), './src/.vit/'),
+          },
           {
             find: /@vit-app$/,
             replacement: resolve(process.cwd(), './src/.vit/vit'),
@@ -45,12 +49,18 @@ export default function pluginFactory(config: PluginConfig): Plugin {
         routes: routes || [],
         dynamicImport: dynamicImport,
       });
+      generateHistory({
+        ...config,
+        base,
+        service,
+      });
       generateRoutes(service);
       generateVit({
         ...config,
         base,
         service,
       });
+      generateExports(service);
 
       // ref:
       // https://github.com/paulmillr/chokidar/issues/639
