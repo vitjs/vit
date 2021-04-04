@@ -27,7 +27,7 @@ yarn add @vitjs/vit --dev
 ```ts
 // vite.config.ts
 import type { UserConfig } from 'vite';
-// @vitjs/vit 默认为运行时依赖
+// `@vitjs/vit` 默认为运行时依赖
 // 其中的 Vite 插件需要独立引入使用
 import vitApp from '@vitjs/vit/plugin';
 
