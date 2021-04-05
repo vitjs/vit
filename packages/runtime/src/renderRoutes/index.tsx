@@ -35,7 +35,7 @@ function render({ route, opts, props }: { route: IRoute; opts: IOpts; props: any
       routes: route.routes || [],
       rootRoutes: opts.rootRoutes,
     },
-    { location: props.location },
+    { location: props.location }
   );
 
   const { component: Component, wrappers } = route;
@@ -95,7 +95,7 @@ export default function renderRoutes(opts: IOpts, switchProps = {}) {
             ...opts,
             rootRoutes: opts.rootRoutes || opts.routes,
           },
-        }),
+        })
       )}
     </Switch>
   ) : null;
