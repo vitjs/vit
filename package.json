@@ -1,7 +1,7 @@
 {
-  "name": "vit",
+  "name": "@vitjs/vit",
   "version": "0.1.0",
-  "description": "vit",
+  "description": "🛠 React application framework based on Vite.",
   "main": "index.js",
   "repository": "https://github.com/vitjs/vit.git",
   "author": "theprimone <yuns.xie@qq.com>",
