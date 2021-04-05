@@ -18,7 +18,7 @@ export interface BasicLayoutProps {
 export default function BasicLayout(props: BasicLayoutProps) {
   const { children, routes } = props;
 
-  const renderMenu = (routes: IRoute[]) => {
+  const renderMenu = (routes: IRoute[], depth = 0) => {
     return routes
       .filter((item) => {
         return !item.redirect && item.path;
@@ -27,12 +27,12 @@ export default function BasicLayout(props: BasicLayoutProps) {
         const subRoutes = item.routes;
 
         return (
-          <div key={item.path}>
+          <div key={item.path} style={{ marginLeft: 16 * depth }}>
             <Link to={item.path}>
               {item.icon && <span style={{ marginRight: 4 }}>{item.icon}</span>}
               {item.path === '/' ? 'Home' : item.name || item.path}
             </Link>
-            {subRoutes && <div style={{ marginLeft: 16 }}>{renderMenu(subRoutes)}</div>}
+            {subRoutes && <div>{renderMenu(subRoutes, depth + 1)}</div>}
           </div>
         );
       });

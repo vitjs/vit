@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Button from '@/components/Button';
 
-export default function Welcome() {
+export default function Welcome({ children }: any) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState();
   const [error, setError] = useState();
@@ -66,6 +66,7 @@ export default function Welcome() {
         {data && <div style={{ whiteSpace: 'pre' }}>{JSON.stringify(data, null, 2)}</div>}
         {error && <div>Something went wrong...</div>}
       </div>
+      {children}
     </div>
   );
 }
