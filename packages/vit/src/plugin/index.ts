@@ -1,90 +1,19 @@
-import { resolve } from 'path';
-import type { Plugin } from 'vite';
-import { Service } from '@vitjs/core';
-import chokidar, { FSWatcher } from 'chokidar';
+import { viteMockServe } from 'vite-plugin-mock';
+import type { MockMethod } from 'vite-plugin-mock';
 
-import { exportStatic } from './preset';
-import { generateHistory, generateRoutes, generateVit, generateExports } from './generateFiles';
-import { autoImportsAheadFiles, autoImportFiles } from './generateFiles/vit';
+import vitAppPlugin from './vit-app';
 import { PluginConfig } from './types';
 
-export default function pluginFactory(config: PluginConfig): Plugin {
-  const { routes, dynamicImport } = config;
-
-  let base = '/';
-  let service: Service;
-  let watchers: FSWatcher[] = [];
-
-  return {
-    name: 'vit-app',
-    config: () => ({
-      resolve: {
-        alias: [
-          {
-            find: /@@/,
-            replacement: resolve(process.cwd(), './src/.vit/'),
-          },
-          {
-            find: /@vit-app$/,
-            replacement: resolve(process.cwd(), './src/.vit/vit'),
-          },
-        ],
-      },
-    }),
-    closeBundle: () => {
-      // 不关闭会导致编译完成时命令不会自动退出
-      watchers.forEach((item) => item.close());
-
-      exportStatic({
-        service,
-        config,
-      });
-    },
-    configResolved: (resolvedConfig) => {
-      base = resolvedConfig.base;
-      service = new Service({
-        debug: config.debug,
-        cwd: process.cwd(),
-        outDir: resolvedConfig.build.outDir,
-        routes: routes || [],
-        dynamicImport: dynamicImport,
-      });
-      generateHistory({
-        ...config,
-        base,
-        service,
-      });
-      generateRoutes(service);
-      generateVit({
-        ...config,
-        base,
-        service,
-      });
-      generateExports(service);
-
-      // ref:
-      // https://github.com/paulmillr/chokidar/issues/639
-      [...autoImportsAheadFiles, ...autoImportFiles]
-        .map((item) => resolve(service.paths.absSrcPath!, item))
-        .forEach((item) => {
-          const watcher = chokidar.watch(item);
-          watcher
-            .on('add', () => {
-              generateVit({
-                ...config,
-                base,
-                service,
-              });
-            })
-            .on('unlink', () => {
-              generateVit({
-                ...config,
-                base,
-                service,
-              });
-            });
-          watchers.push(watcher);
-        });
-    },
-  };
+export default function vitApp(config: PluginConfig) {
+  return [
+    config.mock
+      ? viteMockServe({
+          mockPath: 'mock',
+          logger: !!config.debug,
+        })
+      : null,
+    vitAppPlugin(config),
+  ];
 }
+
+export type { MockMethod };

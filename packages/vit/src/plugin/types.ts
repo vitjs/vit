@@ -12,4 +12,10 @@ export interface PluginConfig {
     type: 'browser' | 'hash' | 'memory';
     options?: BrowserHistoryBuildOptions | HashHistoryBuildOptions | MemoryHistoryBuildOptions;
   };
+  mock?:
+    | boolean
+    | {
+        // 编译后是否使用 Mock 数据，默认为 false
+        productionEnabled?: boolean;
+      };
 }
