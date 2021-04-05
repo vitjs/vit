@@ -35,7 +35,7 @@ yarn add @vitjs/vit --dev
 <!-- index.html -->
 <body>
   <div id="root"></div>
-  <script type="module" src="@vit-app"></script>
+  <script type="module" src="/@vit-app"></script>
 </body>
 ```
 
