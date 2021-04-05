@@ -1,6 +1,6 @@
 {
   "name": "@vitjs/types",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "@vitjs/types",
   "keywords": [
     "vit"
@@ -25,6 +25,6 @@
     "url": "https://github.com/vitjs/vit/issues"
   },
   "dependencies": {
-    "@vitjs/core": "^0.2.0"
+    "@vitjs/core": "^0.3.0"
   }
 }
