@@ -11,6 +11,12 @@ export default defineConfig({
   plugins: [
     reactRefresh(),
     tsconfigPaths(),
-    vitApp({ debug: true, routes, exportStatic: {}, mock: { productionEnabled: true } }),
+    vitApp({
+      debug: true,
+      routes,
+      dynamicImport: { loading: './components/PageLoading' },
+      exportStatic: {},
+      mock: { productionEnabled: true },
+    }),
   ],
 });
