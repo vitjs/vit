@@ -14,7 +14,13 @@ export default function Welcome({ children }: any) {
     fetch('/api/hello?name=@vitjs/vit', {
       method: 'get',
     })
-      .then((response) => response.json())
+      .then((response) => {
+        response
+          .clone()
+          .text()
+          .then((text) => console.log('hello text:\n', text));
+        return response.json();
+      })
       .then((json) => {
         console.log('data', json);
         setData(json);
@@ -35,7 +41,13 @@ export default function Welcome({ children }: any) {
     fetch('/api/version', {
       method: 'get',
     })
-      .then((response) => response.json())
+      .then((response) => {
+        response
+          .clone()
+          .text()
+          .then((text) => console.log('version text:\n', text));
+        return response.json();
+      })
       .then((json) => {
         console.log('data', json);
         setData(json);
