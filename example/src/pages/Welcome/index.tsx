@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { history } from '@vitjs/vit';
 
 import Button from '@/components/Button';
 
@@ -70,6 +71,9 @@ export default function Welcome({ children }: any) {
       }}
     >
       Welcome Page
+      <br />
+      <Button onClick={() => history.push('/hello/bar')}>runtime history push to /hello/bar</Button>
+      <br />
       <br />
       <Button onClick={hello}>mock: hello</Button>
       <Button onClick={version}>mock: version</Button>
