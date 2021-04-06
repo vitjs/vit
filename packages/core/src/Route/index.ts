@@ -125,6 +125,10 @@ export default class Route {
 
       if (route.routes) {
         loopRoutes(route.routes);
+      } else {
+        // ref: https://stackoverflow.com/questions/49162311/react-difference-between-route-exact-path-and-route-path
+        // 没有子路由时赋值 exact
+        route.exact = true;
       }
     }
 

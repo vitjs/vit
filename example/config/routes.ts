@@ -6,7 +6,6 @@ export default [
       {
         path: '/',
         redirect: '/hello',
-        exact: true,
       },
       {
         path: '/hello',
