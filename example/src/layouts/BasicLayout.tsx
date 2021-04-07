@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from '@vitjs/vit';
 
+import Block from '@/components/Block';
+
 export interface IRoute {
   component: React.ReactNode;
   icon?: React.ReactNode;
@@ -39,15 +41,11 @@ export default function BasicLayout(props: BasicLayoutProps) {
   };
 
   return (
-    <div
-      style={{
-        padding: '16px 24px',
-        border: 'red 2px dashed',
-      }}
-    >
-      <h2>BasicLayout</h2>
+    <Block>
+      <h2>Vit App</h2>
       {renderMenu(routes)}
+      <hr />
       {children}
-    </div>
+    </Block>
   );
 }

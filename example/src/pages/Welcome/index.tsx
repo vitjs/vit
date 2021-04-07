@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { history } from '@vitjs/vit';
 
+import Block from '@/components/Block';
 import Button from '@/components/Button';
 
 export default function Welcome({ children }: any) {
@@ -63,13 +64,7 @@ export default function Welcome({ children }: any) {
   };
 
   return (
-    <div
-      style={{
-        marginTop: 16,
-        padding: '16px 24px',
-        border: 'red 2px dashed',
-      }}
-    >
+    <Block>
       Welcome Page
       <br />
       <Button onClick={() => history.push('/hello/bar')}>runtime history push to /hello/bar</Button>
@@ -82,7 +77,7 @@ export default function Welcome({ children }: any) {
         {data && <div style={{ whiteSpace: 'pre' }}>{JSON.stringify(data, null, 2)}</div>}
         {error && <div>Something went wrong...</div>}
       </div>
-      {children}
-    </div>
+      <Block>{children}</Block>
+    </Block>
   );
 }
