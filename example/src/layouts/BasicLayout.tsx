@@ -14,11 +14,14 @@ export interface IRoute {
 
 export interface BasicLayoutProps {
   children?: React.ReactNode;
+  /** 完整路由表 */
   routes: IRoute[];
+  /** 当前层级路由表 */
+  route: IRoute;
 }
 
 export default function BasicLayout(props: BasicLayoutProps) {
-  const { children, routes } = props;
+  const { children, route } = props;
 
   const renderMenu = (routes: IRoute[], depth = 0) => {
     return routes
@@ -42,8 +45,8 @@ export default function BasicLayout(props: BasicLayoutProps) {
 
   return (
     <Block>
-      <h2>Vit App</h2>
-      {renderMenu(routes)}
+      <h2>Basic Layout</h2>
+      {renderMenu(route.routes)}
       <hr />
       {children}
     </Block>

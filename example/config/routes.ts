@@ -1,40 +1,40 @@
 export default [
   {
     path: '/',
-    component: './layouts/BasicLayout',
+    component: './layouts/BlankLayout',
     routes: [
       {
-        path: '/',
-        redirect: '/hello',
-      },
-      {
-        path: '/hello',
-        icon: 'star',
-        name: 'Hello',
-        component: './pages/Hello',
+        path: '/user',
+        component: './layouts/UserLayout',
         routes: [
           {
-            path: '/hello/foo',
-            name: 'Foo',
-            component: './pages/Hello/Foo',
-          },
-          {
-            path: '/hello/bar',
-            name: 'Bar',
-            component: './pages/Hello/Bar',
+            name: 'login',
+            path: '/user/login',
+            component: './pages/User/Login',
           },
         ],
       },
       {
-        path: '/welcome',
-        icon: 'smile',
-        name: 'Welcome',
-        component: './pages/Welcome',
+        path: '/',
+        component: './layouts/BasicLayout',
         routes: [
           {
-            path: '/welcome/bar',
-            name: 'Bar',
-            component: './pages/Welcome/Bar',
+            path: '/',
+            redirect: '/welcome',
+            exact: true,
+          },
+          {
+            path: '/welcome',
+            icon: 'smile',
+            name: '欢迎页',
+            component: './pages/Welcome',
+            exact: true,
+          },
+          {
+            path: '/account',
+            icon: 'user',
+            name: '个人页',
+            component: './pages/Account',
           },
         ],
       },

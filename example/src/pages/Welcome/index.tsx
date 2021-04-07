@@ -65,9 +65,9 @@ export default function Welcome({ children }: any) {
 
   return (
     <Block>
-      Welcome Page
+      <h2>Welcome Page</h2>
       <br />
-      <Button onClick={() => history.push('/hello/bar')}>runtime history push to /hello/bar</Button>
+      <Button onClick={() => history.push('/user/login')}>runtime history push to /user/login</Button>
       <br />
       <br />
       <Button onClick={hello}>mock: hello</Button>
@@ -77,7 +77,6 @@ export default function Welcome({ children }: any) {
         {data && <div style={{ whiteSpace: 'pre' }}>{JSON.stringify(data, null, 2)}</div>}
         {error && <div>Something went wrong...</div>}
       </div>
-      <Block>{children}</Block>
     </Block>
   );
 }
