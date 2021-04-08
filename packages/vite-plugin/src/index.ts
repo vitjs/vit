@@ -1,7 +1,7 @@
 import { viteMockServe } from 'vite-plugin-mock';
 import type { MockMethod } from 'vite-plugin-mock';
 
-import vitAppPlugin from './vit-app';
+import vitAppCore from './vitApp';
 import { PluginConfig } from './types';
 
 export default function vitApp(config: PluginConfig) {
@@ -12,7 +12,7 @@ export default function vitApp(config: PluginConfig) {
           logger: !!config.debug,
         })
       : null,
-    vitAppPlugin(config),
+    vitAppCore(config),
   ];
 }
 

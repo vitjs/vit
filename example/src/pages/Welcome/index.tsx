@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { history } from '@vitjs/vit';
 
 import Block from '@/components/Block';
 import Button from '@/components/Button';
 
-export default function Welcome({ children }: any) {
+import { history } from '@vitjs/vit';
+
+export default function Welcome() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState();
   const [error, setError] = useState();

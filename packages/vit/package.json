@@ -8,18 +8,15 @@
   "author": "theprimone <yuns.xie@qq.com>",
   "homepage": "https://github.com/vitjs/vit#readme",
   "license": "MIT",
-  "main": "runtime/index.js",
+  "main": "dist/index.js",
   "files": [
-    "plugin",
-    "runtime",
+    "dist",
     "package.json",
     "README.md"
   ],
   "scripts": {
-    "build-plugin": "rm -rf ./plugin && tsc -p src/plugin && node ../../scripts/copy.js",
-    "build-runtime": "rm -rf ./runtime && tsc -p src/runtime && node ../../scripts/copy.js",
-    "build": "concurrently \"npm:build-*\"",
-    "dev": "node ../../scripts/copy.js && tsc -w src/plugin"
+    "build": "rm -rf ./dist && tsc",
+    "dev": "rm -rf ./dist && tsc -w"
   },
   "repository": {
     "type": "git",
@@ -32,25 +29,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.6.2",
-    "@vitjs/core": "^0.3.3",
-    "@vitjs/runtime": "^0.3.1",
-    "@vitjs/types": "^0.3.3",
-    "chokidar": "^3.5.1",
-    "lodash": "^4.17.21",
-    "mkdirp": "^1.0.4",
-    "mockjs": "^1.1.0",
-    "mustache": "^4.1.0",
-    "vite-plugin-mock": "^2.4.2"
-  },
-  "devDependencies": {
-    "@types/chokidar": "^2.1.3",
-    "@types/lodash": "^4.14.168",
-    "@types/mkdirp": "^1.0.1",
-    "@types/mustache": "^4.1.1",
-    "concurrently": "^6.0.0",
-    "react": "^17.0.2",
-    "vite": "^2.1.3"
-  },
-  "gitHead": "3a9f3aab27ee09337490e3d7b3b5bfd2d81683a4"
+    "@vitjs/runtime": "^0.3.1"
+  }
 }

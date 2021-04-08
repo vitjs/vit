@@ -22,8 +22,8 @@ export default function pluginFactory(config: PluginConfig): Plugin {
       resolve: {
         alias: [
           {
-            find: /@@/,
-            replacement: resolve(process.cwd(), './src/.vit/'),
+            find: /@@\/exports$/,
+            replacement: resolve(process.cwd(), './src/.vit/exports'),
           },
           {
             find: /@vit-app$/,

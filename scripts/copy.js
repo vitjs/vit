@@ -2,8 +2,7 @@ const fs = require('fs-extra');
 const glob = require('globby');
 
 function toDest(file) {
-  // 当前仅支持 @vitjs/vit
-  return file.replace(/^src\//, './');
+  return file.replace(/^src\//, 'dist/');
 }
 
 glob.sync('src/**/!(*.ts|*.tsx|tsconfig.json)').forEach((file) => {

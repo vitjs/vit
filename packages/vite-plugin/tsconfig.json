@@ -1,7 +1,7 @@
 {
-  "extends": "../../../../tsconfig.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../plugin",
+    "outDir": "./dist",
     "target": "es2018",
     "module": "commonjs",
     "lib": ["es2018"]

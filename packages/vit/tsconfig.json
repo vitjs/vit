@@ -1,7 +1,7 @@
 {
-  "extends": "../../../../tsconfig.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../runtime",
+    "outDir": "./dist",
     "target": "esnext",
     "module": "esnext",
   }
