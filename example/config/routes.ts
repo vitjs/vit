@@ -21,14 +21,12 @@ export default [
           {
             path: '/',
             redirect: '/welcome',
-            exact: true,
           },
           {
             path: '/welcome',
             icon: 'smile',
             name: '欢迎页',
             component: './pages/Welcome',
-            exact: true,
           },
           {
             path: '/account',
