@@ -29,7 +29,11 @@
 ### 安装
 
 ```sh
-yarn add @vitjs/vit --dev
+# Vite 插件，核心功能实现
+yarn add @vitjs/vite-plugin --dev
+
+# Vit App 运行时，提供运行时组件
+yarn add @vitjs/vit
 ```
 
 ### 配置
@@ -45,9 +49,7 @@ yarn add @vitjs/vit --dev
 ```ts
 // vite.config.ts
 import type { UserConfig } from 'vite';
-// `@vitjs/vit` 默认为运行时依赖
-// 其中的 Vite 插件需要独立引入使用
-import vitApp from '@vitjs/vit/plugin';
+import vitApp from '@vitjs/vite-plugin';
 
 const config: UserConfig = {
   plugins: [
