@@ -1,42 +1,42 @@
+English | [简体中文](https://github.com/vitjs/vit/blob/master/README.zh-CN.md)
+
 # @vitjs/vit
 
 [![npm package](https://img.shields.io/npm/v/@vitjs/vit.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@vitjs/vit) [![GitHub stars](https://img.shields.io/github/stars/vitjs/vit)](https://github.com/vitjs/vit/stargazers)
 
-> 🛠 React application framework based on Vite.
-
-基于 Vite 插件实现的类 Umi 的应用框架。
+🛠 React application framework based on Vite Plugin.
 
 ## Features
 
-- ⚡️ 配置式路由
-- ✨ 基于路由的代码分割
-- 🎁 可导出为纯静态应用
-- 🎨 Mock 数据
+- ⚡️ Manually Defined Routing
+- ✨ Routing-based Code Splitting
+- 🎁 Exported Pure Static Application
+- 🎨 Mock Data, Usable in the Production
 
-### 关于路由
+### Routing
 
-框架接管了路由定义与渲染以及应用入口，开发者只需要配置好路由定义后，即可专注于业务开发。
+The framework takes over route definition and rendering, application entry. Developers only focus on business development after configure the route definition.
 
-### Mock 数据
+### Mock Data
 
-基于 [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock)，并内置了对于 fetch 的拦截，可轻松在生产环境使用 Mock 数据。编译时自动注入 Mock 相关数据，开发者专注于 Mock 数据的定义即可。
+Based on [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock), Built-in interception for **fetch**, you can easily use mock data in the production environment to facilitate project preview.
 
-## 如何使用？
+## How to use?
 
 - **node version:** >=10.0.0
 - **vite version:** >=2.0.0
 
-### 安装
+### Install
 
-```sh
-# Vite 插件，核心功能实现
-yarn add @vitjs/vite-plugin --dev
+```shell
+# Vite plugin, Core function realization
+$ yarn add @vitjs/vite-plugin --dev
 
-# Vit App 运行时，提供运行时组件
-yarn add @vitjs/vit
+# Vit app runtime, provide application runtime related components
+$ yarn add @vitjs/vit
 ```
 
-### 配置
+### Config
 
 ```html
 <!-- index.html -->
@@ -54,8 +54,8 @@ import vitApp from '@vitjs/vite-plugin';
 const config: UserConfig = {
   plugins: [
     vitApp({
-      // 根据项目结构配置路由，组件统一从 src 目录下引入
-      // icon 当前支持自动转义为 @ant-design/icons 中的图标
+      // Configure routing according to the project structure, and import components uniformly from the `src` directory
+      // icon currently supports automatic escaping as icons in [`@ant-design/icons`](https://ant.design/components/icon/#List-of-icons)
       routes: [
         {
           path: '/',
@@ -69,7 +69,7 @@ const config: UserConfig = {
             {
               path: '/welcome',
               icon: 'smile',
-              name: '欢迎页',
+              name: 'Welcome',
               component: './pages/Welcome',
             },
           ],
@@ -84,7 +84,7 @@ export default config;
 
 ```json
 // tsconfig.json
-// 为了更好的 TS 类型提示，需要新增如下配置
+// For better TS type prompt, you need to add the following configuration
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -95,12 +95,18 @@ export default config;
 }
 ```
 
-此外，还需要将临时文件所在目录加入到 .gitignore 中：
+In addition, you also need to add the directory where the temporary files are located to `.gitignore`:
 
 ```
 .vit
 ```
 
-### 应用模板
+### Upgrade
 
-更多细节可直接参考应用模板 **[vite-react](https://github.com/theprimone/vite-react)**。值得注意的是，当前插件还在快速迭代阶段，可能会出现配置不兼容的情况。
+```shell
+$ yarn upgrade --scope @vitjs
+```
+
+### Application Template
+
+For more details, please refer directly to the application template **[theprimone/vite-react](https://github.com/theprimone/vite-react)**. It is worth noting that the current plug-in is still in the rapid iteration stage, and configuration incompatibility may occur.
