@@ -20,7 +20,6 @@ export default function mockFetch() {
   if (!Mock || !Mock.mock) {
     throw new Error('Mock.js is required.');
   }
-
   const tempFetchName = '__mockFetchRawFetch__';
   // 防止重复引入
   if (window[tempFetchName]) {
