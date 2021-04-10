@@ -1,4 +1,4 @@
-import type { MockMethod } from '../../packages/vit/src/plugin';
+import type { MockMethod } from '../../packages/vite-plugin/src';
 
 export default [
   {
