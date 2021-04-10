@@ -26,16 +26,18 @@ export default function mockFetch() {
   }
   window[tempFetchName] = window.fetch;
   window.fetch = function (url, options) {
+    const processedUrl = `${window.routerBase === '/' ? '' : window.routerBase}${url}`;
+
     options = options || { method: 'GET' };
     const method = options.method;
     if (Mock.XHR._settings.debug) {
-      console.log(`${method} ${url}`, 'options: ', options);
+      console.log(`${method} ${processedUrl}`, 'options: ', options);
     }
     for (const key in Mock._mocked) {
       const item = Mock._mocked[key];
       const urlMatch =
-        (typeof item.rurl === 'string' && url.indexOf(item.rurl) >= 0) ||
-        (item.rurl instanceof RegExp && item.rurl.test(url));
+        (typeof item.rurl === 'string' && processedUrl.indexOf(item.rurl) >= 0) ||
+        (item.rurl instanceof RegExp && item.rurl.test(processedUrl));
       const methodMatch = !item.rtype || item.rtype === method;
       if (urlMatch && methodMatch) {
         let timeout = Mock.XHR._settings.timeout || '200-400';
@@ -43,7 +45,6 @@ export default function mockFetch() {
           const temp = timeout.split('-').map((item) => parseInt(item));
           timeout = temp[0] + Math.round(Math.random() * (temp[1] - temp[0]));
         }
-        options.url = url;
 
         return new Promise((resolve) => {
           const resp =
@@ -57,7 +58,7 @@ export default function mockFetch() {
               : Mock.mock(item.template);
 
           setTimeout(() => {
-            resolve({
+            const response = {
               status: 200,
               text() {
                 return Promise.resolve(JSON.stringify(resp));
@@ -75,6 +76,12 @@ export default function mockFetch() {
               arrayBuffer() {
                 return Promise.resolve(resp);
               },
+            };
+            resolve({
+              ...response,
+              clone() {
+                return response;
+              },
             });
             if (Mock.XHR._settings.debug) {
               console.log('resp: ', resp);
@@ -83,6 +90,6 @@ export default function mockFetch() {
         });
       }
     }
-    return window[tempFetchName](url, options);
+    return window[tempFetchName](processedUrl, options);
   };
 }

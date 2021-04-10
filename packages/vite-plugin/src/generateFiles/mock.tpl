@@ -11,6 +11,6 @@ function __setupMock__(timeout = 0) {
 export default function mock(mockModules: MockMethod[]) {
   for (const { url, method, response, timeout } of mockModules) {
     __setupMock__(timeout);
-    Mock.mock(new RegExp(url), method || 'get', response);
+    Mock.mock(new RegExp(`${window.routerBase === '/' ? '' : window.routerBase}${url}`), method || 'get', response);
   }
 }
