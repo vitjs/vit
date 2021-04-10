@@ -2,7 +2,10 @@ English | [简体中文](https://github.com/vitjs/vit/blob/master/README.zh-CN.m
 
 # @vitjs/vit
 
-[![npm package](https://img.shields.io/npm/v/@vitjs/vit.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@vitjs/vit) [![GitHub stars](https://img.shields.io/github/stars/vitjs/vit)](https://github.com/vitjs/vit/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/vitjs/vit)](https://github.com/vitjs/vit/stargazers) 
+[![npm package](https://img.shields.io/npm/v/@vitjs/vit.svg)](https://www.npmjs.com/package/@vitjs/vit) 
+[![npm download total](https://img.shields.io/npm/dt/@vitjs/vit.svg)](https://www.npmjs.com/package/@vitjs/vit) 
+[![npm download weekly](https://img.shields.io/npm/dw/@vitjs/vit.svg)](https://www.npmjs.com/package/@vitjs/vit) 
 
 🛠 React application framework based on Vite Plugin.
 
