@@ -37,6 +37,36 @@ export default function Welcome() {
       });
   };
 
+  const helloPost = () => {
+    setData(undefined);
+    setError(undefined);
+    setLoading(true);
+    fetch('/api/hello', {
+      method: 'post',
+      body: JSON.stringify({
+        hello: 'world',
+      }),
+    })
+      .then((response) => {
+        response
+          .clone()
+          .text()
+          .then((text) => console.log('hello text:\n', text));
+        return response.json();
+      })
+      .then((json) => {
+        console.log('data', json);
+        setData(json);
+      })
+      .catch((err) => {
+        console.log('error', err);
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   const version = () => {
     setData(undefined);
     setError(undefined);
@@ -72,6 +102,7 @@ export default function Welcome() {
       <br />
       <br />
       <Button onClick={hello}>mock: hello</Button>
+      <Button onClick={helloPost}>mock: hello post</Button>
       <Button onClick={version}>mock: version</Button>
       <div style={{ width: '100%', minHeight: 100 }}>
         {loading && <div>{'loading...'}</div>}

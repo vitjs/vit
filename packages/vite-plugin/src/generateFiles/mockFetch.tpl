@@ -16,6 +16,15 @@ function qs(url) {
   );
 }
 
+function loadBody(fetchBody: any) {
+  try {
+    return JSON.parse(fetchBody);
+  } catch(error) {
+    console.log("loadBody error", error);
+    return fetchBody;
+  }
+}
+
 export default function mockFetch() {
   if (!Mock || !Mock.mock) {
     throw new Error('Mock.js is required.');
@@ -53,7 +62,7 @@ export default function mockFetch() {
               ? // 保持与 mock 定义一致的入参
                 item.template.call(this, {
                   query: qs(url),
-                  body: options?.body,
+                  body: loadBody(options?.body),
                   headers: options?.headers,
                 })
               : Mock.mock(item.template);
