@@ -2,6 +2,8 @@
 
 import Mock from 'mockjs';
 
+import { loadUrl } from './mock';
+
 function qs(url) {
   const search = url.split('?')[1];
   if (!search) {
@@ -26,7 +28,7 @@ export default function mockFetch() {
   }
   window[tempFetchName] = window.fetch;
   window.fetch = function (url, options) {
-    const processedUrl = `${window.routerBase === '/' ? '' : window.routerBase}${url}`;
+    const processedUrl = loadUrl(url);
 
     options = options || { method: 'GET' };
     const method = options.method;
