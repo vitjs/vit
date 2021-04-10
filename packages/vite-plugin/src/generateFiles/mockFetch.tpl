@@ -40,7 +40,7 @@ export default function mockFetch() {
       const urlMatch =
         (typeof item.rurl === 'string' && item.rurl.indexOf(processedUrl) >= 0) ||
         (item.rurl instanceof RegExp && item.rurl.test(processedUrl));
-      const methodMatch = !item.rtype || item.rtype === method;
+      const methodMatch = !item.rtype || item.rtype.toLowerCase() === method.toLowerCase();
       if (urlMatch && methodMatch) {
         let timeout = Mock.XHR._settings.timeout || '200-400';
         if (typeof timeout === 'string') {
