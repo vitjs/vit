@@ -38,7 +38,7 @@ export default function mockFetch() {
     for (const key in Mock._mocked) {
       const item = Mock._mocked[key];
       const urlMatch =
-        (typeof item.rurl === 'string' && processedUrl.indexOf(item.rurl) >= 0) ||
+        (typeof item.rurl === 'string' && item.rurl.indexOf(processedUrl) >= 0) ||
         (item.rurl instanceof RegExp && item.rurl.test(processedUrl));
       const methodMatch = !item.rtype || item.rtype === method;
       if (urlMatch && methodMatch) {
