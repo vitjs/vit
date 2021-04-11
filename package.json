@@ -12,6 +12,8 @@
   ],
   "scripts": {
     "build": "lerna run build",
+    "ver": "lerna version",
+    "pub": "lerna publish from-git",
     "demo": "cd example && vite",
     "demo:build": "cd example && vite build",
     "dev": "npm run demo"
