@@ -113,4 +113,4 @@ $ yarn upgrade --scope @vitjs
 
 ### Application Template
 
-For more details, please refer directly to the application template **[theprimone/vite-react](https://github.com/theprimone/vite-react)**. It is worth noting that the current plug-in is still in the rapid iteration stage, and configuration incompatibility may occur.
+For more details, please refer directly to the application template **[theprimone/vite-react](https://github.com/theprimone/vite-react)**. It is worth noting that the current plugin is still in the rapid iteration stage, and configuration incompatibility may occur.
