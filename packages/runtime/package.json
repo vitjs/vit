@@ -29,15 +29,13 @@
     "access": "public"
   },
   "dependencies": {
+    "@types/react-loadable": "^5.5.5",
+    "@types/react-router": "^5.1.13",
+    "@types/react-router-dom": "^5.1.7",
     "history-with-query": "^4.10.4",
     "react-loadable": "^5.5.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0"
-  },
-  "devDependencies": {
-    "@types/react-loadable": "^5.5.5",
-    "@types/react-router": "^5.1.13",
-    "@types/react-router-dom": "^5.1.7"
   },
   "gitHead": "3a9f3aab27ee09337490e3d7b3b5bfd2d81683a4"
 }
