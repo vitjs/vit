@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from '@vitjs/vit';
 
 import Block from '@/components/Block';

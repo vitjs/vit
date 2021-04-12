@@ -19,4 +19,7 @@ export default defineConfig({
       mock: { productionEnabled: true },
     }),
   ],
+  esbuild: {
+    jsxInject: "import * as React from 'react'",
+  },
 });
