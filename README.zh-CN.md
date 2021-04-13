@@ -8,7 +8,7 @@
 [![npm download weekly](https://img.shields.io/npm/dw/@vitjs/vit.svg)](https://www.npmjs.com/package/@vitjs/vit) 
 
 
-🛠 基于 Vite 插件的 React 应用框架。
+🛠 类 UmiJS 的 React 应用框架。
 
 ## Features
 

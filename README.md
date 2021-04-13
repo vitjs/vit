@@ -8,7 +8,7 @@ English | [简体中文](./README.zh-CN.md)
 [![npm download weekly](https://img.shields.io/npm/dw/@vitjs/vit.svg)](https://www.npmjs.com/package/@vitjs/vit) 
 
 
-🛠 React application framework based on Vite Plugin.
+🛠 React application framework inspired by UmiJS.
 
 ## Features
 
