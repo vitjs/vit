@@ -1,16 +1,18 @@
 [English](./README.md) | 简体中文
 
+<p align="center">
+  <img width="180" src="./icons/logo.svg" alt="Vit logo">
+</p>
+<p align="center">
+  <a href="https://github.com/vitjs/vit/stargazers"><img src="https://img.shields.io/github/stars/vitjs/vit" alt="GitHub stars"></a>
+  <a href="https://www.npmjs.com/package/@vitjs/vit"><img src="https://img.shields.io/npm/v/@vitjs/vit.svg" alt="npm package"></a>
+  <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/vite.svg" alt="node compatility"></a>
+  <a href="http://vitejs.dev/"><img src="https://img.shields.io/badge/vite-%3E%3D2.0.0-%234fc921" alt="vite compatility"></a>
+</p>
+
 # @vitjs/vit
 
-[![GitHub stars](https://img.shields.io/github/stars/vitjs/vit)](https://github.com/vitjs/vit/stargazers) 
-[![npm package](https://img.shields.io/npm/v/@vitjs/vit.svg?style=flat-square?style=flat-square)](https://www.npmjs.com/package/@vitjs/vit) 
-[![npm download total](https://img.shields.io/npm/dt/@vitjs/vit.svg)](https://www.npmjs.com/package/@vitjs/vit) 
-[![npm download weekly](https://img.shields.io/npm/dw/@vitjs/vit.svg)](https://www.npmjs.com/package/@vitjs/vit) 
-
-
-🛠 类 UmiJS 的 React 应用框架。
-
-## Features
+> 🛠 类 UmiJS 的 React 应用框架。
 
 - ⚡️ 配置式路由
 - ✨ 基于路由的代码分割
@@ -26,9 +28,6 @@
 基于 [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock)，并内置了对于 fetch 的拦截，可轻松在生产环境使用 Mock 数据，方便项目展示。
 
 ## 如何使用？
-
-- **node version:** >=10.0.0
-- **vite version:** >=2.0.0
 
 ### 安装
 

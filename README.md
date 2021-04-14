@@ -1,16 +1,20 @@
 English | [简体中文](./README.zh-CN.md)
 
+<p align="center">
+  <a href="https://github.com/vitjs/vit#vitjsvit">
+    <img width="180" src="./icons/logo.svg" alt="Vit logo">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/vitjs/vit/stargazers"><img src="https://img.shields.io/github/stars/vitjs/vit" alt="GitHub stars"></a>
+  <a href="https://www.npmjs.com/package/@vitjs/vit"><img src="https://img.shields.io/npm/v/@vitjs/vit.svg" alt="npm package"></a>
+  <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/vite.svg" alt="node compatility"></a>
+  <a href="http://vitejs.dev/"><img src="https://img.shields.io/badge/vite-%3E%3D2.0.0-%234fc921" alt="vite compatility"></a>
+</p>
+
 # @vitjs/vit
 
-[![GitHub stars](https://img.shields.io/github/stars/vitjs/vit)](https://github.com/vitjs/vit/stargazers) 
-[![npm package](https://img.shields.io/npm/v/@vitjs/vit.svg)](https://www.npmjs.com/package/@vitjs/vit) 
-[![npm download total](https://img.shields.io/npm/dt/@vitjs/vit.svg)](https://www.npmjs.com/package/@vitjs/vit) 
-[![npm download weekly](https://img.shields.io/npm/dw/@vitjs/vit.svg)](https://www.npmjs.com/package/@vitjs/vit) 
-
-
-🛠 React application framework inspired by UmiJS.
-
-## Features
+> 🛠 React application framework inspired by UmiJS.
 
 - ⚡️ Manually Defined Routing
 - ✨ Routing-based Code Splitting
@@ -26,9 +30,6 @@ The framework takes over route definition and rendering, application entry. Deve
 Based on [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock), Built-in interception for **fetch**, you can easily use mock data in the production environment to facilitate project preview.
 
 ## How to use?
-
-- **node version:** >=10.0.0
-- **vite version:** >=2.0.0
 
 ### Install
 
