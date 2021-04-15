@@ -1,5 +1,5 @@
 import type { BrowserHistoryBuildOptions, HashHistoryBuildOptions, MemoryHistoryBuildOptions } from '@vitjs/runtime';
-import { IRoute } from '@vitjs/types';
+import { IRoute } from '@vitjs/core';
 
 export interface PluginConfig {
   debug?: boolean;

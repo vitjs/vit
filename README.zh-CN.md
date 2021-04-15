@@ -10,9 +10,9 @@
   <a href="http://vitejs.dev/"><img src="https://img.shields.io/badge/vite-%3E%3D2.0.0-%234fc921" alt="vite compatility"></a>
 </p>
 
-# @vitjs/vit
+# Vit 🚀
 
-> 🛠 类 UmiJS 的 React 应用框架。
+> 类 UmiJS 的 React 应用框架。
 
 - ⚡️ 配置式路由
 - ✨ 基于路由的代码分割
@@ -33,10 +33,10 @@
 
 ```shell
 # Vite 插件，核心功能实现
-$ yarn add @vitjs/vite-plugin --dev
+$ yarn add @vitjs/vit --dev
 
 # Vit App 运行时，提供应用运行时相关组件
-$ yarn add @vitjs/vit
+$ yarn add @vitjs/runtime
 ```
 
 ### 配置
@@ -52,7 +52,7 @@ $ yarn add @vitjs/vit
 ```ts
 // vite.config.ts
 import type { UserConfig } from 'vite';
-import vitApp from '@vitjs/vite-plugin';
+import vitApp from '@vitjs/vit';
 
 const config: UserConfig = {
   plugins: [
@@ -98,11 +98,7 @@ export default config;
 }
 ```
 
-此外，还需要将临时文件所在目录加入到 `.gitignore` 中：
-
-```
-.vit
-```
+此外，由于插件会生成运行时依赖，故应用的 `build` 脚本需要移除 `tsc` 命令。最后，将临时文件所在目录 `.vit` 加入到 `.gitignore` 中即可。
 
 ### 升级
 

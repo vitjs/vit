@@ -27,3 +27,6 @@ export type {
 
 export { default as renderRoutes } from './renderRoutes';
 export { default as dynamic } from './dynamic';
+
+// @ts-ignore
+export * from '@@/exports';

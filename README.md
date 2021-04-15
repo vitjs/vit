@@ -12,9 +12,9 @@ English | [简体中文](./README.zh-CN.md)
   <a href="http://vitejs.dev/"><img src="https://img.shields.io/badge/vite-%3E%3D2.0.0-%234fc921" alt="vite compatility"></a>
 </p>
 
-# @vitjs/vit
+# Vit 🚀
 
-> 🛠 React application framework inspired by UmiJS.
+> React application framework inspired by UmiJS.
 
 - ⚡️ Manually Defined Routing
 - ✨ Routing-based Code Splitting
@@ -35,10 +35,10 @@ Based on [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock), Built-i
 
 ```shell
 # Vite plugin, Core function realization
-$ yarn add @vitjs/vite-plugin --dev
+$ yarn add @vitjs/vit --dev
 
 # Vit app runtime, provide application runtime related components
-$ yarn add @vitjs/vit
+$ yarn add @vitjs/runtime
 ```
 
 ### Config
@@ -54,7 +54,7 @@ $ yarn add @vitjs/vit
 ```ts
 // vite.config.ts
 import type { UserConfig } from 'vite';
-import vitApp from '@vitjs/vite-plugin';
+import vitApp from '@vitjs/vit';
 
 const config: UserConfig = {
   plugins: [
@@ -100,11 +100,7 @@ export default config;
 }
 ```
 
-In addition, you also need to add the directory where the temporary files are located to `.gitignore`:
-
-```
-.vit
-```
+In addition, the plugin will generate runtime dependencies, so the `build` script of the application needs to remove the `tsc` command. In the end, add the directory `.vit` where the temporary files are located to `.gitignore`.
 
 ### Upgrade
 

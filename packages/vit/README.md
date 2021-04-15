@@ -1,7 +1,8 @@
-English | [简体中文](./README.zh-CN.md)
-
+English | [简体中文](https://github.com/vitjs/vit/blob/master/README.zh-CN.md)
 <p align="center">
-  <img width="180" src="./icons/logo.svg" alt="Vit logo">
+  <a href="https://github.com/vitjs/vit#vitjsvit">
+    <img width="180" src="./icons/logo.svg" alt="Vit logo">
+  </a>
 </p>
 <p align="center">
   <a href="https://github.com/vitjs/vit/stargazers"><img src="https://img.shields.io/github/stars/vitjs/vit" alt="GitHub stars"></a>
@@ -10,9 +11,9 @@ English | [简体中文](./README.zh-CN.md)
   <a href="http://vitejs.dev/"><img src="https://img.shields.io/badge/vite-%3E%3D2.0.0-%234fc921" alt="vite compatility"></a>
 </p>
 
-# @vitjs/vit
+# Vit 🚀
 
-> 🛠 React application framework inspired by UmiJS.
+> React application framework inspired by UmiJS.
 
 - ⚡️ Manually Defined Routing
 - ✨ Routing-based Code Splitting
@@ -28,14 +29,15 @@ The framework takes over route definition and rendering, application entry. Deve
 Based on [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock), Built-in interception for **fetch**, you can easily use mock data in the production environment to facilitate project preview.
 
 ## How to use?
+
 ### Install
 
 ```shell
 # Vite plugin, Core function realization
-$ yarn add @vitjs/vite-plugin --dev
+$ yarn add @vitjs/vit --dev
 
 # Vit app runtime, provide application runtime related components
-$ yarn add @vitjs/vit
+$ yarn add @vitjs/runtime
 ```
 
 ### Config
@@ -51,7 +53,7 @@ $ yarn add @vitjs/vit
 ```ts
 // vite.config.ts
 import type { UserConfig } from 'vite';
-import vitApp from '@vitjs/vite-plugin';
+import vitApp from '@vitjs/vit';
 
 const config: UserConfig = {
   plugins: [
@@ -97,11 +99,7 @@ export default config;
 }
 ```
 
-In addition, you also need to add the directory where the temporary files are located to `.gitignore`:
-
-```
-.vit
-```
+In addition, the plugin will generate runtime dependencies, so the `build` script of the application needs to remove the `tsc` command. In the end, add the directory `.vit` where the temporary files are located to `.gitignore`.
 
 ### Upgrade
 

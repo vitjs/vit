@@ -1,25 +1,19 @@
-export {
-  Link,
-  NavLink,
-  Prompt,
-  Redirect,
-  Route,
-  Router,
-  StaticRouter,
-  MemoryRouter,
-  Switch,
-  matchPath,
-  withRouter,
-  useHistory,
-  useLocation,
-  useParams,
-  useRouteMatch,
-  createBrowserHistory,
-  createHashHistory,
-  createMemoryHistory,
-  dynamic,
-} from '@vitjs/runtime';
-export type { MemoryHistory } from '@vitjs/runtime';
+import { viteMockServe } from 'vite-plugin-mock';
+import type { MockMethod } from 'vite-plugin-mock';
 
-// @ts-ignore
-export * from '@@/exports';
+import vitAppCore from './vitApp';
+import { PluginConfig } from './types';
+
+export default function vitApp(config: PluginConfig) {
+  return [
+    config.mock
+      ? viteMockServe({
+          mockPath: 'mock',
+          logger: !!config.debug,
+        })
+      : null,
+    vitAppCore(config),
+  ];
+}
+
+export type { MockMethod };
