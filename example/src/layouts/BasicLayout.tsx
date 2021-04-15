@@ -1,4 +1,4 @@
-import { Link } from '@vitjs/vit';
+import { Link } from '@vitjs/runtime';
 
 import Block from '@/components/Block';
 

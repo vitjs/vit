@@ -1,4 +1,4 @@
-import { history } from '@vitjs/vit';
+import { history } from '@vitjs/runtime';
 
 import Block from '@/components/Block';
 import Button from '@/components/Button';

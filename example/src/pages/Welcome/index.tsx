@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Block from '@/components/Block';
 import Button from '@/components/Button';
 
-import { history } from '@vitjs/vit';
+import { history } from '@vitjs/runtime';
 
 export default function Welcome() {
   const [loading, setLoading] = useState(false);

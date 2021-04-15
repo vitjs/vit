@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-import vitApp from '../packages/vite-plugin/dist';
+import vitApp from '../packages/vit/dist';
 import routes from './config/routes';
 
 // https://vitejs.dev/config/
