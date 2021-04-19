@@ -1,7 +1,7 @@
 {
   "name": "@vitjs/vit",
+  "version": "0.0.0",
   "description": "🛠 React application framework inspired by UmiJS.",
-  "main": "index.js",
   "repository": "https://github.com/vitjs/vit.git",
   "author": "theprimone <yuns.xie@qq.com>",
   "license": "MIT",
@@ -37,6 +37,5 @@
       "typescript": "TypeScript required.",
       "OTHERS": "just devDependencies of ./example."
     }
-  ],
-  "version": "0.0.0"
+  ]
 }
