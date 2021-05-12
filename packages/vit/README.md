@@ -1,4 +1,5 @@
 English | [简体中文](https://github.com/vitjs/vit/blob/master/README.zh-CN.md)
+
 <p align="center">
   <a href="https://github.com/vitjs/vit#vitjsvit">
     <img width="180" src="./icons/logo.svg" alt="Vit logo">
@@ -109,4 +110,4 @@ $ yarn upgrade --scope @vitjs
 
 ### Application Template
 
-For more details, please refer directly to the application template **[theprimone/vite-react](https://github.com/theprimone/vite-react)**. It is worth noting that the current plugin is still in the rapid iteration stage, and configuration incompatibility may occur.
+For more details, please refer directly to the application template **[theprimone/vite-react](https://github.com/theprimone/vite-react)**. It is worth noting that the current plugin is still under heavy development, API and usages are not set in stone yet.
