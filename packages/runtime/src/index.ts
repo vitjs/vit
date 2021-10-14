@@ -25,7 +25,7 @@ export type {
   MemoryHistoryBuildOptions,
 } from 'history-with-query';
 
-export { default as renderRoutes } from './renderRoutes';
+export { default as renderRoutes, IRoute } from './renderRoutes';
 export { default as dynamic } from './dynamic';
 
 // @ts-ignore
