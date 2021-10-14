@@ -1,9 +1,7 @@
 {{ #importsAhead }}
 {{{ importsAhead }}}
 {{ /importsAhead }}
-{{ #noReactJsx }}
-import React from 'react';
-{{ /noReactJsx }}
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { renderRoutes } from '@vitjs/runtime';
 {{#COMMENT}}
@@ -25,10 +23,10 @@ import getRoutes from './routes';
 {{ /entryCodeAhead }}
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <Router history={history}>
       {renderRoutes({ routes: getRoutes() })}
     </Router>
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('root'),
 );

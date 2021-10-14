@@ -11,15 +11,6 @@ import { PluginConfig } from '../types';
 export const autoImportsAheadFiles = ['concent.ts'];
 export const autoImportFiles = ['global.ts', 'global.tsx', 'global.css', 'global.less', 'global.scss', 'global.sass'];
 
-function isReactJsx(service: Service) {
-  const tsconfigString = readFileSync(resolve(service.paths.cwd!, 'tsconfig.json'), 'utf-8');
-  try {
-    // ref: https://devblogs.microsoft.com/typescript/announcing-typescript-4-1/#react-17-jsx-factories
-    return (JSON.parse(tsconfigString).compilerOptions.jsx as string).startsWith('react-jsx');
-  } catch (error) {}
-  return false;
-}
-
 function getMockData(service: Service) {
   const mockList = glob.sync(`${service.paths.cwd}/mock/**/*.ts`);
   const imports = mockList.map((item, index) => {
@@ -74,7 +65,6 @@ export default function generateVit(options: GenerateVitOptions) {
             'mock(mockModules);',
           ].join('\n')
         : null,
-      noReactJsx: !isReactJsx(service),
     }),
   });
 }
