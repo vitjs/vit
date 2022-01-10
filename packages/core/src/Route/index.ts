@@ -1,4 +1,5 @@
 import { resolve } from 'path';
+import { winPath } from '@umijs/utils';
 import _cloneDeep from 'lodash/cloneDeep';
 import _uniq from 'lodash/uniq';
 
@@ -43,13 +44,13 @@ export default class Route {
     let wrapperCursor = 0;
     const resolveRoute = (route: IRoute) => {
       if (route.component && !result[route.component]) {
-        route.component = resolve(this.service.paths.absSrcPath!, route.component);
+        route.component = winPath(resolve(this.service.paths.absSrcPath!, route.component));
         result[route.component] = `Component${componentCursor}`;
         componentCursor += 1;
       }
       if (route.wrappers) {
         route.wrappers.forEach((item) => {
-          let wrapper = resolve(this.service.paths.absSrcPath!, item);
+          let wrapper = winPath(resolve(this.service.paths.absSrcPath!, item));
           if (!result[wrapper]) {
             result[wrapper] = `Wrapper${wrapperCursor}`;
             wrapperCursor += 1;
@@ -88,7 +89,7 @@ export default class Route {
 
     const replaceComponent = (route: IRoute) => {
       if (route.component) {
-        route.component = resolve(this.service.paths.absSrcPath!, route.component);
+        route.component = winPath(resolve(this.service.paths.absSrcPath!, route.component));
         if (this.dynamicImport) {
           let loading = '';
           if (this.dynamicImport.loading) {
@@ -104,7 +105,7 @@ export default class Route {
     const replaceWrappers = (route: IRoute) => {
       if (route.wrappers) {
         route.wrappers = route.wrappers.map((item) => {
-          let wrapper = resolve(this.service.paths.absSrcPath!, item);
+          let wrapper = winPath(resolve(this.service.paths.absSrcPath!, item));
           if (this.dynamicImport) {
             let loading = '';
             if (this.dynamicImport.loading) {

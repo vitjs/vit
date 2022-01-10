@@ -29,6 +29,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@umijs/utils": "^3.5.20",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4"
   },

@@ -2,6 +2,7 @@ import { resolve } from 'path';
 import type { Plugin, ResolvedConfig } from 'vite';
 import { Service } from '@vitjs/core';
 import chokidar, { FSWatcher } from 'chokidar';
+import { winPath } from '@umijs/utils';
 
 import { exportStatic } from './preset';
 import { generateHistory, generateRoutes, generateVit, generateExports } from './generateFiles';
@@ -23,11 +24,11 @@ export default function pluginFactory(config: PluginConfig): Plugin {
         alias: [
           {
             find: /@@\/exports$/,
-            replacement: resolve(process.cwd(), './src/.vit/exports'),
+            replacement: winPath(resolve(process.cwd(), './src/.vit/exports')),
           },
           {
             find: /@vit-app$/,
-            replacement: resolve(process.cwd(), './src/.vit/vit'),
+            replacement: winPath(resolve(process.cwd(), './src/.vit/vit')),
           },
         ],
       },
@@ -68,7 +69,7 @@ export default function pluginFactory(config: PluginConfig): Plugin {
       // ref:
       // https://github.com/paulmillr/chokidar/issues/639
       [...autoImportsAheadFiles, ...autoImportFiles]
-        .map((item) => resolve(service.paths.absSrcPath!, item))
+        .map((item) => winPath(resolve(service.paths.absSrcPath!, item)))
         .forEach((item) => {
           const watcher = chokidar.watch(item);
           watcher

@@ -2,6 +2,7 @@ import { EOL } from 'os';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { resolve, join, dirname, relative } from 'path';
 import mkdirp from 'mkdirp';
+import { winPath } from '@umijs/utils';
 
 import Route, { RouteOptions } from '../Route';
 import { isTSFile, getGlobalFiles } from './utils';
@@ -34,10 +35,10 @@ export default class Service {
   }
 
   initPaths(options: ServiceOptions) {
-    const absSrcPath = resolve(options.cwd, './src');
-    const absPagesPath = resolve(options.cwd, './src/pages');
-    const absOutputPath = resolve(options.outDir);
-    const absTmpPath = resolve(options.cwd, './src/.vit');
+    const absSrcPath = winPath(resolve(options.cwd, './src'));
+    const absPagesPath = winPath(resolve(options.cwd, './src/pages'));
+    const absOutputPath = winPath(resolve(options.outDir));
+    const absTmpPath = winPath(resolve(options.cwd, './src/.vit'));
 
     this.paths = {
       cwd: options.cwd,

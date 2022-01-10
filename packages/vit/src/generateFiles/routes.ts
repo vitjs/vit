@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import Mustache from 'mustache';
+import { winPath } from '@umijs/utils';
 import { Service } from '@vitjs/core';
 
 import { resolveIcons } from './utils';
@@ -49,7 +50,7 @@ export default function generateRoutes(service: Service) {
       loadingComponent:
         service.route.dynamicImport &&
         service.route.dynamicImport.loading &&
-        resolve(process.cwd(), './src/', service.route.dynamicImport.loading),
+        winPath(resolve(process.cwd(), './src/', service.route.dynamicImport.loading)),
     }),
   });
 }
