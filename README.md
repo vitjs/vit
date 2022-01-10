@@ -87,7 +87,7 @@ const config: UserConfig = {
 export default config;
 ```
 
-```json
+```js
 // tsconfig.json
 // For better TS type prompt, you need to add the following configuration
 {

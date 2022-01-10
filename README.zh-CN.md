@@ -85,7 +85,7 @@ const config: UserConfig = {
 export default config;
 ```
 
-```json
+```js
 // tsconfig.json
 // 为了更好的 TS 类型提示，需要新增如下配置
 {
