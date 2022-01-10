@@ -1,7 +1,7 @@
 {
-  "name": "@vitjs/core",
+  "name": "@vitjs/utils",
   "version": "0.6.4",
-  "description": "@vitjs/core",
+  "description": "@vitjs/utils",
   "keywords": [
     "vit"
   ],
@@ -27,15 +27,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "lodash": "^4.17.21",
-    "mkdirp": "^1.0.4"
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.14.168",
-    "@types/mkdirp": "^1.0.1",
-    "@vitjs/utils": "^0.6.4"
-  },
-  "gitHead": "3a9f3aab27ee09337490e3d7b3b5bfd2d81683a4"
+  }
 }

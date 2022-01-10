@@ -1,7 +1,7 @@
 import { resolve } from 'path';
-import { winPath } from '@umijs/utils';
 import _cloneDeep from 'lodash/cloneDeep';
 import _uniq from 'lodash/uniq';
+import { winPath } from '@vitjs/utils';
 
 import Service from '../Service';
 

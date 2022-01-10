@@ -2,7 +2,7 @@ import { EOL } from 'os';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { resolve, join, dirname, relative } from 'path';
 import mkdirp from 'mkdirp';
-import { winPath } from '@umijs/utils';
+import { winPath } from '@vitjs/utils';
 
 import Route, { RouteOptions } from '../Route';
 import { isTSFile, getGlobalFiles } from './utils';

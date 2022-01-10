@@ -2,7 +2,7 @@ import { resolve } from 'path';
 import type { Plugin, ResolvedConfig } from 'vite';
 import { Service } from '@vitjs/core';
 import chokidar, { FSWatcher } from 'chokidar';
-import { winPath } from '@umijs/utils';
+import { winPath } from '@vitjs/utils';
 
 import { exportStatic } from './preset';
 import { generateHistory, generateRoutes, generateVit, generateExports } from './generateFiles';

@@ -1,8 +1,8 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import Mustache from 'mustache';
-import { winPath } from '@umijs/utils';
 import { Service } from '@vitjs/core';
+import { winPath } from '@vitjs/utils';
 
 import { resolveIcons } from './utils';
 

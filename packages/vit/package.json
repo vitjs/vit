@@ -32,8 +32,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@umijs/utils": "^3.5.20",
     "@vitjs/core": "^0.6.4",
+    "@vitjs/utils": "^0.6.4",
     "chokidar": "^3.5.1",
     "globby": "^11.0.3",
     "lodash": "^4.17.21",
