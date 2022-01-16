@@ -1,15 +1,15 @@
 import { defineConfig } from 'vite';
-import reactRefresh from '@vitejs/plugin-react-refresh';
+import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-import vitApp from '../packages/vit/dist';
+import vitApp from '@vitjs/vit';
 import routes from './config/routes';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/vit-example/',
   plugins: [
-    reactRefresh(),
+    react(),
     tsconfigPaths(),
     vitApp({
       debug: true,
@@ -19,7 +19,4 @@ export default defineConfig({
       mock: { productionEnabled: true },
     }),
   ],
-  esbuild: {
-    jsxInject: "import * as React from 'react'",
-  },
 });

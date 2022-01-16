@@ -15,8 +15,8 @@
     "README.md"
   ],
   "scripts": {
-    "build": "rm -rf ./dist && tsc",
-    "dev": "rm -rf ./dist && tsc -w"
+    "build": "rimraf ./dist && tsc",
+    "dev": "tsc -watch"
   },
   "repository": {
     "type": "git",

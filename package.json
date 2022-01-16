@@ -10,33 +10,19 @@
     "packages/*"
   ],
   "scripts": {
+    "bootstrap": "lerna bootstrap && lerna run build && cd example && yarn",
     "build": "lerna run build",
     "ver": "lerna version",
     "pub": "lerna publish from-git",
-    "demo": "cd example && vite",
-    "demo:build": "cd example && vite build",
-    "dev": "npm run demo"
+    "dev:demo": "cd example && vite",
+    "dev:packages": "lerna run dev --parallel",
+    "build:demo": "cd example && vite build"
   },
   "devDependencies": {
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@vitejs/plugin-react-refresh": "^1.3.1",
+    "concurrently": "^7.0.0",
     "globby": "^11.0.3",
     "lerna": "^4.0.0",
-    "mockjs": "^1.1.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "typescript": "^4.2.3",
-    "vite": "^2.1.5",
-    "vite-plugin-mock": "^2.4.2",
-    "vite-tsconfig-paths": "^2.5.0"
-  },
-  "@comment devDependencies": [
-    "COMMENT of devDependencies, inspired by: https://dev.to/dhurlburtusa/comment/16nn8",
-    {
-      "lerna": "A monorepo tool.",
-      "typescript": "TypeScript required.",
-      "OTHERS": "just devDependencies of ./example."
-    }
-  ]
+    "rimraf": "^3.0.2",
+    "typescript": "^4.2.3"
+  }
 }

@@ -52,7 +52,7 @@ export default function dynamic(options: any) {
   } else if (typeof options === 'object') {
     loadableOptions = { ...loadableOptions, ...options };
   } else {
-    throw new Error(`Unexpect arguments ${options}`);
+    throw new Error(`Unexpected arguments ${options}`);
   }
 
   // Support for passing options,

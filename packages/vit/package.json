@@ -17,8 +17,8 @@
     "README.md"
   ],
   "scripts": {
-    "build": "rm -rf ./dist && tsc && node ../../scripts/copy.js",
-    "dev": "rm -rf ./dist  && node ../../scripts/copy.js && tsc -w"
+    "build": "rimraf ./dist && tsc && node ../../scripts/copy.js",
+    "dev": "node ../../scripts/copy.js && tsc -watch"
   },
   "repository": {
     "type": "git",

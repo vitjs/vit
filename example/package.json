@@ -1,0 +1,20 @@
+{
+  "name": "vit-example",
+  "version": "0.0.0",
+  "author": "theprimone <yuns.xie@qq.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@vitejs/plugin-react": "^1.1.4",
+    "lerna": "^4.0.0",
+    "mockjs": "^1.1.0",
+    "vite-plugin-mock": "^2.4.2",
+    "vite-tsconfig-paths": "^2.5.0"
+  }
+}
