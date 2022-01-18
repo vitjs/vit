@@ -1,6 +1,6 @@
 {
   "name": "@vitjs/vit",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "🛠 React application framework inspired by UmiJS.",
   "keywords": [
     "vit",
@@ -32,8 +32,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "@vitjs/core": "^0.6.5",
-    "@vitjs/utils": "^0.6.5",
+    "@vitjs/core": "^0.6.6",
+    "@vitjs/utils": "^0.6.6",
     "chokidar": "^3.5.1",
     "globby": "^11.0.3",
     "lodash": "^4.17.21",
