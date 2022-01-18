@@ -14,6 +14,7 @@
     "build": "lerna run build",
     "ver": "lerna version",
     "pub": "lerna publish from-git",
+    "dev": "npm run dev:demo",
     "dev:demo": "cd example && vite",
     "dev:packages": "lerna run dev --parallel",
     "build:demo": "cd example && vite build"

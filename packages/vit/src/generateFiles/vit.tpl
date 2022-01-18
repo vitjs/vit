@@ -13,10 +13,11 @@ import { renderRoutes } from '@vitjs/runtime';
 {{/COMMENT}}
 import { Router, history } from '@vitjs/runtime';
 
-import getRoutes from './routes';
 {{ #imports }}
 {{{ imports }}}
 {{ /imports }}
+
+import getRoutes from './routes';
 
 {{ #entryCodeAhead }}
 {{{ entryCodeAhead }}}

@@ -9,10 +9,7 @@ type IGetGlobalFiles = (options: { absSrcPath: string; files: string[]; checkExi
  * @param files default load global files
  */
 export const getGlobalFiles: IGetGlobalFiles = ({ absSrcPath, files }) => {
-  return files
-    .map((file) => join(absSrcPath || '', file))
-    .filter((file) => existsSync(file))
-    .slice(0, 1);
+  return files.map((file) => join(absSrcPath || '', file)).filter((file) => existsSync(file));
 };
 
 export const isDynamicRoute = (path: string): boolean =>
