@@ -1,4 +1,4 @@
-import { Service } from '@vitjs/core';
+import type { Service } from '@vitjs/core';
 
 export default function generateExports(service: Service) {
   service.writeTmpFile({

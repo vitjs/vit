@@ -1,10 +1,12 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import Mustache from 'mustache';
-import { Service } from '@vitjs/core';
+
 import { winPath } from '@vitjs/utils';
+import Mustache from 'mustache';
 
 import { resolveIcons } from './utils';
+
+import type { Service } from '@vitjs/core';
 
 export interface GenerateRoutesOptions {
   service: Service;
@@ -13,7 +15,7 @@ export interface GenerateRoutesOptions {
 export default function generateRoutes(service: Service) {
   const routesTpl = readFileSync(resolve(__dirname, './routes.tpl'), 'utf-8');
 
-  let moduleMap: { [path: string]: string } = {};
+  let moduleMap: Record<string, string> = {};
   if (!service.route.dynamicImport) {
     moduleMap = service.route.resolveRoutes();
   }

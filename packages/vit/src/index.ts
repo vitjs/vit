@@ -1,8 +1,10 @@
 import { viteMockServe } from 'vite-plugin-mock';
-import type { MockMethod } from 'vite-plugin-mock';
 
 import vitAppCore from './vitApp';
-import { PluginConfig } from './types';
+
+import type { PluginConfig } from './types';
+import type { MockMethod } from 'vite-plugin-mock';
+
 
 export default function vitApp(config: PluginConfig) {
   return [

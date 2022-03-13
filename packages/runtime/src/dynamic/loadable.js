@@ -2,6 +2,7 @@
 
 import { createElement, useContext, useImperativeHandle, forwardRef } from 'react';
 import { useSubscription } from 'use-subscription';
+
 import { LoadableContext } from './loadable-context';
 
 const ALL_INITIALIZERS = [];
@@ -98,7 +99,7 @@ function createLoadableComponent(loadFn, options) {
       webpack: null,
       modules: null,
     },
-    options
+    options,
   );
 
   let subscription = null;
@@ -200,6 +201,7 @@ class LoadableSubscription {
       timedOut: false,
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const { _res: res, _opts: opts } = this;
 
     if (res.loading) {

@@ -1,11 +1,12 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import Mustache from 'mustache';
-import type { UserConfig } from 'vite';
-import { Service } from '@vitjs/core';
-import _upperFirst from 'lodash/upperFirst';
 
-import { PluginConfig } from '../types';
+import upperFirst from 'lodash/upperFirst';
+import Mustache from 'mustache';
+
+import type { PluginConfig } from '../types';
+import type { Service } from '@vitjs/core';
+import type { UserConfig } from 'vite';
 
 export interface GenerateHistoryOptions extends Pick<UserConfig, 'base'>, Pick<PluginConfig, 'history'> {
   service: Service;
@@ -19,14 +20,14 @@ export default function generateHistory(options: GenerateHistoryOptions) {
   service.writeTmpFile({
     path: 'history.ts',
     content: Mustache.render(historyTpl, {
-      creator: `create${_upperFirst(type)}History`,
+      creator: `create${upperFirst(type)}History`,
       options: JSON.stringify(
         {
           ...historyOptions,
           ...(type === 'browser' || type === 'hash' ? { basename: base || '/' } : {}),
         },
         null,
-        2
+        2,
       ),
     }),
   });

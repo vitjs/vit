@@ -1,8 +1,10 @@
-import React from 'react';
 import * as allIcons from '@ant-design/icons';
-import { IRoute } from '@vitjs/core';
+import React from 'react';
+
+import type { IRoute } from '@vitjs/core';
 
 // 如果不引入 React,只引入 @ant-design/icons 时会报错
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 React.version;
 
 function toHump(name: string) {
@@ -11,7 +13,7 @@ function toHump(name: string) {
   });
 }
 
-type IconMap = { [icon: string]: string };
+type IconMap = Record<string, string>;
 
 export function resolveIcons(data: IRoute[], parentIcons?: IconMap): IconMap {
   if (!Array.isArray(data)) {

@@ -8,6 +8,7 @@
   "author": "theprimone <yuns.xie@qq.com>",
   "homepage": "https://github.com/vitjs/vit#readme",
   "license": "MIT",
+  "type": "module",
   "main": "dist/index.js",
   "files": [
     "dist",

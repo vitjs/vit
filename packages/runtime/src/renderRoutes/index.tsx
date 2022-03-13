@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { createElement } from 'react';
-import type { ComponentType } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+
+import type { ComponentType } from 'react';
 
 export interface IRoute {
   path?: string;

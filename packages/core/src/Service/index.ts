@@ -1,11 +1,15 @@
-import { EOL } from 'os';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { EOL } from 'os';
 import { resolve, join, dirname, relative } from 'path';
-import mkdirp from 'mkdirp';
-import { winPath } from '@vitjs/utils';
 
-import Route, { RouteOptions } from '../Route';
+import { winPath } from '@vitjs/utils';
+import mkdirp from 'mkdirp';
+
+import Route from '../Route';
+
 import { isTSFile, getGlobalFiles } from './utils';
+
+import type { RouteOptions } from '../Route';
 
 export interface ServiceOptions extends Omit<RouteOptions, 'paths' | 'service'> {
   debug?: boolean;
@@ -58,14 +62,15 @@ export default class Service {
 
   writeTmpFile({ path, content, skipTSCheck = true }: { path: string; content: string; skipTSCheck?: boolean }) {
     const absPath = join(this.paths.absTmpPath!, path);
+    let contentResult = content;
     if (isTSFile(path) && skipTSCheck) {
       // write @ts-nocheck into first line
-      content = `// @ts-nocheck${EOL}${content}`;
+      contentResult = `// @ts-nocheck${EOL}${contentResult}`;
     }
 
     this.writeFile({
       path: absPath,
-      content,
+      content: contentResult,
     });
   }
 

@@ -1,9 +1,10 @@
 import { resolve } from 'path';
-import _cloneDeep from 'lodash/cloneDeep';
-import _uniq from 'lodash/uniq';
-import { winPath } from '@vitjs/utils';
 
-import Service from '../Service';
+import { winPath } from '@vitjs/utils';
+import cloneDeep from 'lodash/cloneDeep';
+import uniq from 'lodash/uniq';
+
+import type Service from '../Service';
 
 export interface IRoute {
   component?: string;
@@ -38,7 +39,7 @@ export default class Route {
    * 解析路由组件配置，得到组件绝对路径和组件别名的映射
    */
   resolveRoutes() {
-    const result: { [path: string]: string } = {};
+    const result: Record<string, string> = {};
 
     let componentCursor = 0;
     let wrapperCursor = 0;
@@ -50,7 +51,7 @@ export default class Route {
       }
       if (route.wrappers) {
         route.wrappers.forEach((item) => {
-          let wrapper = winPath(resolve(this.service.paths.absSrcPath!, item));
+          const wrapper = winPath(resolve(this.service.paths.absSrcPath!, item));
           if (!result[wrapper]) {
             result[wrapper] = `Wrapper${wrapperCursor}`;
             wrapperCursor += 1;
@@ -59,6 +60,7 @@ export default class Route {
       }
 
       if (route.routes) {
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
         loopRoutes(route.routes);
       }
     };
@@ -80,9 +82,9 @@ export default class Route {
    */
   dumpRoutes(options?: { extraReplace?: (route: IRoute) => void; postDump?: (content: string) => string }) {
     const { extraReplace, postDump } = options || {};
-    const clonedRoutes = _cloneDeep(this.routes!);
+    const clonedRoutes = cloneDeep(this.routes!);
 
-    let modules: { [path: string]: string } = {};
+    let modules: Record<string, string> = {};
     if (!this.dynamicImport) {
       modules = this.resolveRoutes();
     }
@@ -105,7 +107,7 @@ export default class Route {
     const replaceWrappers = (route: IRoute) => {
       if (route.wrappers) {
         route.wrappers = route.wrappers.map((item) => {
-          let wrapper = winPath(resolve(this.service.paths.absSrcPath!, item));
+          const wrapper = winPath(resolve(this.service.paths.absSrcPath!, item));
           if (this.dynamicImport) {
             let loading = '';
             if (this.dynamicImport.loading) {
@@ -161,12 +163,17 @@ export default class Route {
   }
 
   getPaths({ routes }: { routes: IRoute[] }): string[] {
-    return _uniq(
+    return uniq(
       routes.reduce((memo: string[], route) => {
-        if (route.path) memo.push(route.path);
-        if (route.routes) memo = memo.concat(this.getPaths({ routes: route.routes }));
-        return memo;
-      }, [])
+        let result = [...memo];
+        if (route.path) {
+          result.push(route.path);
+        }
+        if (route.routes) {
+          result = result.concat(this.getPaths({ routes: route.routes }));
+        }
+        return result;
+      }, []),
     );
   }
 }

@@ -1,9 +1,11 @@
+import get from 'lodash/get';
 import React from 'react';
+
 import Loadable from './loadable';
 
 interface LoadableOptions {
-  loading?: Function;
-  loader?: Function;
+  loading?: (data: { error: Error; isLoading: boolean }) => React.ReactNode;
+  loader?: () => Promise<{ default: React.ReactNode } | React.ReactNode>;
 }
 
 function FixedLoadable(options: LoadableOptions) {
@@ -11,10 +13,14 @@ function FixedLoadable(options: LoadableOptions) {
     ...options,
     loader: () => {
       return new Promise<any>((resolve) => {
-        options.loader?.().then((module: { default: any }) => {
-          // ref: https://stackoverflow.com/a/34130767/8335317
-          // 返回 module 页面报错，无法正常渲染
-          resolve(module.default);
+        options.loader?.().then((module) => {
+          if (get(module, 'default')) {
+            // ref: https://stackoverflow.com/a/34130767/8335317
+            // 返回 module 页面报错，无法正常渲染
+            resolve(get(module, 'default'));
+          } else {
+            return module;
+          }
         });
       });
     },

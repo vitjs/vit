@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "sourceMap": true,
     "outDir": "./dist",
     "target": "esnext",
     "module": "esnext"

@@ -1,12 +1,13 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import Mustache from 'mustache';
-import type { ResolvedConfig } from 'vite';
-import { Service } from '@vitjs/core';
-import glob from 'globby';
-import _get from 'lodash/get';
 
-import { PluginConfig } from '../types';
+import glob from 'globby';
+import get from 'lodash/get';
+import Mustache from 'mustache';
+
+import type { PluginConfig } from '../types';
+import type { Service } from '@vitjs/core';
+import type { ResolvedConfig } from 'vite';
 
 export const autoImportsAheadFiles = ['concent.ts'];
 export const autoImportFiles = ['global.ts', 'global.tsx', 'global.css', 'global.less', 'global.scss', 'global.sass'];
@@ -32,7 +33,7 @@ export default function generateVit(options: GenerateVitOptions) {
   const { service, command, mock } = options;
   const vitTpl = readFileSync(resolve(__dirname, './vit.tpl'), 'utf-8');
 
-  const productionEnabled = command === 'build' && _get(mock, 'productionEnabled') === true;
+  const productionEnabled = command === 'build' && get(mock, 'productionEnabled') === true;
 
   if (productionEnabled) {
     const mockFetchTs = readFileSync(resolve(__dirname, './mockFetch.tpl'), 'utf-8');

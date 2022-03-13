@@ -1,9 +1,10 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import _get from 'lodash/get';
-import { Service } from '@vitjs/core';
 
-import { PluginConfig } from '../types';
+import get from 'lodash/get';
+
+import type { PluginConfig } from '../types';
+import type { Service } from '@vitjs/core';
 
 export interface ExportStaticOptions {
   config: PluginConfig;
@@ -12,10 +13,10 @@ export interface ExportStaticOptions {
 
 export default function exportStatic(options: ExportStaticOptions) {
   const { config, service } = options;
-  const exportStatic = _get(config, 'exportStatic');
-  const isHistoryRouter = _get(config, 'history.type', 'history') === 'history';
+  const isExportStatic = get(config, 'exportStatic');
+  const isHistoryRouter = get(config, 'history.type', 'history') === 'history';
 
-  if (!exportStatic || !isHistoryRouter) {
+  if (!isExportStatic || !isHistoryRouter) {
     return;
   }
 

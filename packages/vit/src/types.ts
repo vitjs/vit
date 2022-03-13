@@ -1,10 +1,14 @@
-import type { BrowserHistoryBuildOptions, HashHistoryBuildOptions, MemoryHistoryBuildOptions } from '@vitjs/runtime';
-import { IRoute } from '@vitjs/core';
+import type { IRoute } from '@vitjs/core';
+import type {
+  BrowserHistoryBuildOptions,
+  HashHistoryBuildOptions,
+  MemoryHistoryBuildOptions,
+} from '@vitjs/runtime';
 
 export interface PluginConfig {
   debug?: boolean;
   routes?: IRoute[];
-  exportStatic?: {};
+  exportStatic?: Record<string, never>;
   dynamicImport?: {
     loading?: string;
   };

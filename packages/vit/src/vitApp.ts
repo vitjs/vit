@@ -1,20 +1,23 @@
 import { resolve } from 'path';
-import type { Plugin, ResolvedConfig } from 'vite';
-import { Service } from '@vitjs/core';
-import chokidar, { FSWatcher } from 'chokidar';
-import { winPath } from '@vitjs/utils';
 
-import { exportStatic } from './preset';
+import { Service } from '@vitjs/core';
+import { winPath } from '@vitjs/utils';
+import chokidar from 'chokidar';
+
 import { generateHistory, generateRoutes, generateVit, generateExports } from './generateFiles';
 import { autoImportsAheadFiles, autoImportFiles } from './generateFiles/vit';
-import { PluginConfig } from './types';
+import { exportStatic } from './preset';
+
+import type { PluginConfig } from './types';
+import type { FSWatcher } from 'chokidar';
+import type { Plugin, ResolvedConfig } from 'vite';
 
 export default function pluginFactory(config: PluginConfig): Plugin {
   const { routes, dynamicImport } = config;
 
   let base = '/';
   let service: Service;
-  let watchers: FSWatcher[] = [];
+  const watchers: FSWatcher[] = [];
   let resolvedConfig: ResolvedConfig;
 
   return {

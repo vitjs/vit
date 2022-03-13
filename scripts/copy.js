@@ -6,10 +6,8 @@ function toDest(file) {
 }
 
 // 拷贝诸如 .tpl / .js 文件到编译目录中
-glob.sync('src/**/!(*.ts|*.tsx|tsconfig.json)').forEach((file) => {
+glob.sync('src/**/(*.tpl|*.js)').forEach((file) => {
   fs.copy(file, toDest(file), {
     overwrite: true,
   });
 });
-
-
