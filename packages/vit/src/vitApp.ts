@@ -4,8 +4,14 @@ import { Service } from '@vitjs/core';
 import { winPath } from '@vitjs/utils';
 import chokidar from 'chokidar';
 
-import { generateHistory, generateRoutes, generateVit, generateExports } from './generateFiles';
-import { autoImportsAheadFiles, autoImportFiles } from './generateFiles/vit';
+import {
+  generateHistory,
+  generateRoutes,
+  generateVit,
+  generateExports,
+  getImportAheadModules,
+  getImportModules,
+} from './generateFiles';
 import { exportStatic } from './preset';
 
 import type { PluginConfig } from './types';
@@ -63,7 +69,6 @@ export default function pluginFactory(config: PluginConfig): Plugin {
       generateRoutes(service);
       generateVit({
         ...config,
-        base,
         service,
         command: resolvedConfig.command,
       });
@@ -71,7 +76,7 @@ export default function pluginFactory(config: PluginConfig): Plugin {
 
       // ref:
       // https://github.com/paulmillr/chokidar/issues/639
-      [...autoImportsAheadFiles, ...autoImportFiles]
+      [...getImportAheadModules(config.globalImport?.aheadModules), ...getImportModules(config.globalImport?.modules)]
         .map((item) => winPath(resolve(service.paths.absSrcPath!, item)))
         .forEach((item) => {
           const watcher = chokidar.watch(item);
@@ -79,7 +84,6 @@ export default function pluginFactory(config: PluginConfig): Plugin {
             .on('add', () => {
               generateVit({
                 ...config,
-                base,
                 service,
                 command: resolvedConfig.command,
               });
@@ -87,7 +91,6 @@ export default function pluginFactory(config: PluginConfig): Plugin {
             .on('unlink', () => {
               generateVit({
                 ...config,
-                base,
                 service,
                 command: resolvedConfig.command,
               });

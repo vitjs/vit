@@ -5,12 +5,11 @@ import glob from 'globby';
 import get from 'lodash/get';
 import Mustache from 'mustache';
 
+import { getImportAheadModules, getImportModules } from './import';
+
 import type { PluginConfig } from '../types';
 import type { Service } from '@vitjs/core';
 import type { ResolvedConfig } from 'vite';
-
-export const autoImportsAheadFiles = ['concent.ts'];
-export const autoImportFiles = ['global.ts', 'global.tsx', 'global.css', 'global.less', 'global.scss', 'global.sass'];
 
 function getMockData(service: Service) {
   const mockList = glob.sync(`${service.paths.cwd}/mock/**/*.ts`);
@@ -24,13 +23,15 @@ function getMockData(service: Service) {
 }
 
 export interface GenerateVitOptions
-  extends Pick<ResolvedConfig, 'base' | 'command'>,
-    Pick<PluginConfig, 'history' | 'mock'> {
+  extends Pick<ResolvedConfig, 'command'>,
+    Pick<PluginConfig, 'mock' | 'globalImport'> {
   service: Service;
 }
 
 export default function generateVit(options: GenerateVitOptions) {
-  const { service, command, mock } = options;
+  const { service, command, mock, globalImport } = options;
+  const customImportAheadModules = get(globalImport, 'aheadModules', []);
+  const customImportModules = get(globalImport, 'modules', []);
   const vitTpl = readFileSync(resolve(__dirname, './vit.tpl'), 'utf-8');
 
   const productionEnabled = command === 'build' && get(mock, 'productionEnabled') === true;
@@ -55,8 +56,8 @@ export default function generateVit(options: GenerateVitOptions) {
   service.writeTmpFile({
     path: 'vit.tsx',
     content: Mustache.render(vitTpl, {
-      importsAhead: service.dumpGlobalImports(autoImportsAheadFiles),
-      imports: service.dumpGlobalImports(autoImportFiles),
+      importsAhead: service.dumpGlobalImports(getImportAheadModules(customImportAheadModules)),
+      imports: service.dumpGlobalImports(getImportModules(customImportModules)),
       entryCodeAhead: productionEnabled
         ? [
             "import mockModules from './mockModules.ts';",
