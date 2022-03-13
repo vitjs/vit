@@ -106,6 +106,8 @@ In addition, the plugin will generate runtime dependencies, so the `build` scrip
 
 ```shell
 $ yarn upgrade --scope @vitjs
+
+$ yarn upgrade --scope @vitjs --latest
 ```
 
 ### Application Template
