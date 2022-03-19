@@ -30,12 +30,10 @@
     "access": "public"
   },
   "dependencies": {
+    "@types/react-router-dom": "^5.3.3",
     "history-with-query": "^4.10.4",
     "react-router-dom": "^5.2.0",
     "use-subscription": "^1.5.1"
-  },
-  "devDependencies": {
-    "@types/react-router-dom": "^5.1.7"
   },
   "gitHead": "3a9f3aab27ee09337490e3d7b3b5bfd2d81683a4"
 }
