@@ -100,6 +100,12 @@ export default config;
 
 此外，由于插件会生成运行时依赖，故应用的 `build` 脚本需要移除 `tsc` 命令。最后，将临时文件所在目录 `.vit` 加入到 `.gitignore` 中即可。
 
+### 自动引入
+
+可通过 [`globalImports`](https://github.com/vitjs/vit/blob/master/packages/vit/src/types.ts#L9) 自定义需要全局自动引入的文件，默认全局自动引入的文件可查阅 [import.ts](https://github.com/vitjs/vit/blob/master/packages/vit/src/generateFiles/import.ts#L2)
+
+特别的，可自动引入 [`_app.tsx`](https://github.com/vitjs/vit/blob/master/packages/core/src/Service/index.ts#L21) 以重写应用的渲染逻辑。
+
 ### 升级
 
 ```shell

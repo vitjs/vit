@@ -102,6 +102,12 @@ export default config;
 
 In addition, the plugin will generate runtime dependencies, so the `build` script of the application needs to remove the `tsc` command. In the end, add the directory `.vit` where the temporary files are located to `.gitignore`.
 
+### Auto import
+
+[`globalImports`](https://github.com/vitjs/vit/blob/master/packages/vit/src/types.ts#L9) lets you customize the files that need to be imported globally automatically. By default, you can see [`import.ts`](https://github.com/vitjs/vit/blob/master/packages/vit/src/generateFiles/import.ts#L2)
+
+In particular, [`_app.tsx`](https://github.com/vitjs/vit/blob/master/packages/core/src/Service/index.ts#L21) can be automatically import to rewrite the application's rendering logic.
+
 ### Upgrade
 
 ```shell
