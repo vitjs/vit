@@ -1,5 +1,7 @@
 export const defaultImportAheadModules = [];
 export const defaultImportModules = [
+  'global.js',
+  'global.jsx',
   'global.ts',
   'global.tsx',
   'global.css',

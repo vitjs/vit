@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
+import { winPath } from '@vitjs/utils';
 import glob from 'globby';
 import get from 'lodash/get';
 import Mustache from 'mustache';
@@ -32,7 +33,19 @@ export default function generateVit(options: GenerateVitOptions) {
   const { service, command, mock, globalImport } = options;
   const customImportAheadModules = get(globalImport, 'aheadModules', []);
   const customImportModules = get(globalImport, 'modules', []);
-  const vitTpl = readFileSync(resolve(__dirname, './vit.tpl'), 'utf-8');
+  const defaultTpl = './vit.tpl';
+
+  const getVitTpl = () => {
+    const customApp = service.getCustomApp();
+    if (customApp) {
+      const appContent = readFileSync(winPath(resolve(service.paths.absSrcPath!, customApp)), 'utf-8');
+      console.log('appContent', `>${appContent}<`);
+      if (appContent.trim()) {
+        return readFileSync(resolve(__dirname, './vit-custom.tpl'), 'utf-8');
+      }
+    }
+    return readFileSync(resolve(__dirname, defaultTpl), 'utf-8');
+  };
 
   const productionEnabled = command === 'build' && get(mock, 'productionEnabled') === true;
 
@@ -53,9 +66,12 @@ export default function generateVit(options: GenerateVitOptions) {
     });
   }
 
+  const tpl = getVitTpl();
+  console.log(tpl);
+
   service.writeTmpFile({
     path: 'vit.tsx',
-    content: Mustache.render(vitTpl, {
+    content: Mustache.render(tpl, {
       importsAhead: service.dumpGlobalImports(getImportAheadModules(customImportAheadModules)),
       imports: service.dumpGlobalImports(getImportModules(customImportModules)),
       entryCodeAhead: productionEnabled

@@ -82,6 +82,9 @@ export default function pluginFactory(config: PluginConfig): Plugin {
           const watcher = chokidar.watch(item);
           watcher
             .on('add', () => {
+              if (config.debug) {
+                console.log('[vit-app] add file:', item);
+              }
               generateVit({
                 ...config,
                 service,
@@ -89,6 +92,47 @@ export default function pluginFactory(config: PluginConfig): Plugin {
               });
             })
             .on('unlink', () => {
+              if (config.debug) {
+                console.log('[vit-app] unlink file:', item);
+              }
+              generateVit({
+                ...config,
+                service,
+                command: resolvedConfig.command,
+              });
+            });
+          watchers.push(watcher);
+        });
+
+      service._customApps
+        .map((item) => winPath(resolve(service.paths.absSrcPath!, item)))
+        .forEach((item) => {
+          const watcher = chokidar.watch(item);
+          watcher
+            .on('add', () => {
+              if (config.debug) {
+                console.log('[vit-app] add custom app:', item);
+              }
+              generateVit({
+                ...config,
+                service,
+                command: resolvedConfig.command,
+              });
+            })
+            .on('change', () => {
+              if (config.debug) {
+                console.log('[vit-app] change custom app:', item);
+              }
+              generateVit({
+                ...config,
+                service,
+                command: resolvedConfig.command,
+              });
+            })
+            .on('unlink', () => {
+              if (config.debug) {
+                console.log('[vit-app] unlink custom app:', item);
+              }
               generateVit({
                 ...config,
                 service,

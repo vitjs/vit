@@ -18,6 +18,8 @@ export interface ServiceOptions extends Omit<RouteOptions, 'paths' | 'service'> 
 }
 
 export default class Service {
+  _customApps = ['_app.tsx', '_app.jsx', '_app.js'];
+
   debug?: boolean;
   paths: {
     cwd?: string;
@@ -51,6 +53,12 @@ export default class Service {
       absOutputPath,
       absTmpPath,
     };
+  }
+
+  getCustomApp() {
+    return this._customApps.find((item) => {
+      return existsSync(winPath(resolve(this.paths.absSrcPath!, item)));
+    });
   }
 
   writeFile({ path, content }: { path: string; content: string }) {

@@ -11,6 +11,7 @@
   "homepage": "https://github.com/vitjs/vit#readme",
   "license": "MIT",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "package.json",
