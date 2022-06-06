@@ -1,6 +1,6 @@
 {
   "name": "@vitjs/vit",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "🛠 React application framework inspired by UmiJS.",
   "keywords": [
     "vit",
