@@ -39,7 +39,6 @@ export default function generateVit(options: GenerateVitOptions) {
     const customApp = service.getCustomApp();
     if (customApp) {
       const appContent = readFileSync(winPath(resolve(service.paths.absSrcPath!, customApp)), 'utf-8');
-      console.log('appContent', `>${appContent}<`);
       if (appContent.trim()) {
         return readFileSync(resolve(__dirname, './vit-custom.tpl'), 'utf-8');
       }
@@ -67,7 +66,6 @@ export default function generateVit(options: GenerateVitOptions) {
   }
 
   const tpl = getVitTpl();
-  console.log(tpl);
 
   service.writeTmpFile({
     path: 'vit.tsx',
