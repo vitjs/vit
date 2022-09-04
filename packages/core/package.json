@@ -1,6 +1,6 @@
 {
   "name": "@vitjs/core",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "@vitjs/core",
   "keywords": [
     "vit"
@@ -36,7 +36,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.168",
     "@types/mkdirp": "^1.0.1",
-    "@vitjs/utils": "^0.8.0"
+    "@vitjs/utils": "^0.9.0"
   },
   "gitHead": "3a9f3aab27ee09337490e3d7b3b5bfd2d81683a4"
 }
