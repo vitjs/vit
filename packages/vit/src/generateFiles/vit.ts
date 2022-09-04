@@ -5,6 +5,7 @@ import { winPath } from '@vitjs/utils';
 import glob from 'globby';
 import get from 'lodash/get';
 import Mustache from 'mustache';
+import semver from 'semver';
 
 import { getImportAheadModules, getImportModules } from './import';
 
@@ -25,12 +26,12 @@ function getMockData(service: Service) {
 
 export interface GenerateVitOptions
   extends Pick<ResolvedConfig, 'command'>,
-    Pick<PluginConfig, 'mock' | 'globalImport'> {
+    Pick<PluginConfig, 'mock' | 'globalImport' | 'reactStrictMode' | 'debug'> {
   service: Service;
 }
 
 export default function generateVit(options: GenerateVitOptions) {
-  const { service, command, mock, globalImport } = options;
+  const { service, command, mock, globalImport, reactStrictMode = true, debug } = options;
   const customImportAheadModules = get(globalImport, 'aheadModules', []);
   const customImportModules = get(globalImport, 'modules', []);
   const defaultTpl = './vit.tpl';
@@ -67,9 +68,19 @@ export default function generateVit(options: GenerateVitOptions) {
 
   const tpl = getVitTpl();
 
+  const coerceVersion = semver.coerce(service.getReactVersion())?.version;
+  const isReact18 = coerceVersion ? semver.satisfies(coerceVersion, '^18.0.0') : false;
+
+  if (debug) {
+    console.log('[vit-app] react version:', coerceVersion);
+    console.log('[vit-app] is react 18:', isReact18);
+  }
+
   service.writeTmpFile({
     path: 'vit.tsx',
     content: Mustache.render(tpl, {
+      react18: isReact18,
+      reactStrictMode,
       importsAhead: service.dumpGlobalImports(getImportAheadModules(customImportAheadModules)),
       imports: service.dumpGlobalImports(getImportModules(customImportModules)),
       entryCodeAhead: productionEnabled

@@ -1,8 +1,13 @@
 {{ #importsAhead }}
 {{{ importsAhead }}}
 {{ /importsAhead }}
-import { StrictMode } from 'react';
+import React from 'react';
+{{#react18}}
+import ReactDOM from 'react-dom/client';
+{{/react18}}
+{{^react18}}
 import ReactDOM from 'react-dom';
+{{/react18}}
 import { renderRoutes } from '@vitjs/runtime';
 {{#COMMENT}}
 // 值得注意的是，不能直接从临时文件中直接引入，即不同通过 `./history` 引入，
@@ -23,11 +28,27 @@ import getRoutes from './routes';
 {{{ entryCodeAhead }}}
 {{ /entryCodeAhead }}
 
-ReactDOM.render(
-  <StrictMode>
+const DefaultApp: React.FC = () => {
+  return (
+{{#reactStrictMode}}
+    <React.StrictMode>
+      <Router history={history}>
+        {renderRoutes({ routes: getRoutes() })}
+      </Router>
+    </React.StrictMode>
+  );
+{{/reactStrictMode}}
+{{^reactStrictMode}}
     <Router history={history}>
       {renderRoutes({ routes: getRoutes() })}
     </Router>
-  </StrictMode>,
-  document.getElementById('root'),
-);
+  );
+{{/reactStrictMode}}
+}
+
+{{#react18}}
+ReactDOM.createRoot(document.getElementById('root')).render(<DefaultApp />);
+{{/react18}}
+{{^react18}}
+ReactDOM.render(<DefaultApp />, document.getElementById('root'));
+{{/react18}}

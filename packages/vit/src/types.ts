@@ -30,6 +30,8 @@ export interface PluginConfig {
     type: 'browser' | 'hash' | 'memory';
     options?: BrowserHistoryBuildOptions | HashHistoryBuildOptions | MemoryHistoryBuildOptions;
   };
+  /** Enable React strict mode, default: true */
+  reactStrictMode?: boolean;
   mock?:
     | boolean
     | {

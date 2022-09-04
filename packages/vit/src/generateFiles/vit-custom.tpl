@@ -2,7 +2,12 @@
 {{{ importsAhead }}}
 {{ /importsAhead }}
 import React from 'react';
+{{#react18}}
+import ReactDOM from 'react-dom/client';
+{{/react18}}
+{{^react18}}
 import ReactDOM from 'react-dom';
+{{/react18}}
 import { renderRoutes } from '@vitjs/runtime';
 {{#COMMENT}}
 // 值得注意的是，不能直接从临时文件中直接引入，即不同通过 `./history` 引入，
@@ -27,17 +32,35 @@ import getRoutes from './routes';
 
 const DefaultApp: React.FC = () => {
   return (
+{{#reactStrictMode}}
+    <React.StrictMode>
+      <Router history={history}>
+        {renderRoutes({ routes: getRoutes() })}
+      </Router>
+    </React.StrictMode>
+  );
+{{/reactStrictMode}}
+{{^reactStrictMode}}
     <Router history={history}>
       {renderRoutes({ routes: getRoutes() })}
     </Router>
   );
+{{/reactStrictMode}}
 }
 
-ReactDOM.render(
-  <React.StrictMode>
+{{#react18}}
+ReactDOM.createRoot(document.getElementById('root'))
+  .render(
     <CustomApp
       Component={DefaultApp}
     />
-  </React.StrictMode>,
-  document.getElementById('root'),
+  );
+{{/react18}}
+{{^react18}}
+ReactDOM.render(
+  <CustomApp
+    Component={DefaultApp}
+  />,
+  document.getElementById('root')
 );
+{{/react18}}

@@ -61,6 +61,12 @@ export default class Service {
     });
   }
 
+  getReactVersion(): string {
+    const packageJsonPath = winPath(resolve(this.paths.cwd!, 'package.json'));
+    const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
+    return packageJson.dependencies.react || packageJson.devDependencies.react;
+  }
+
   writeFile({ path, content }: { path: string; content: string }) {
     mkdirp.sync(dirname(path));
     if (!existsSync(path) || readFileSync(path, 'utf-8') !== content) {
